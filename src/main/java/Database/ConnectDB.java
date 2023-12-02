@@ -10,13 +10,27 @@ public class ConnectDB {
     static String user = "root";
     static String password = "";
 
+    // Private constructor to prevent instantiation from outside the class
+    private ConnectDB() {
+    }
+
     public static Connection getCnn() {
+        if (cnn == null) {
+            synchronized (ConnectDB.class) {
+                if (cnn == null) {
+                    createConnection();
+                }
+            }
+        }
+        return cnn;
+    }
+
+    private static void createConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             cnn = DriverManager.getConnection(url, user, password);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
-        return cnn;
     }
 }
