@@ -27,11 +27,11 @@ public class ProductBO {
     public Product getProductById(String id) {
         return productDAO.getDetailProductById(id);
     }
-    public void addProduct(String nameProduct, String idCategory, int price) {
-        productDAO.addProduct(nameProduct, idCategory, price);
+    public void addProduct(String nameProduct, String idCategory, int price, String urlImage) {
+        productDAO.addProduct(nameProduct, idCategory, price, urlImage);
     }
-    public void updateProduct(String idProduct, String nameProduct, String idCategory, int price) {
-        productDAO.updateProduct(idProduct, nameProduct, idCategory, price);
+    public void updateProduct(String idProduct, String nameProduct, String idCategory, int price, String urlImage) {
+        productDAO.updateProduct(idProduct, nameProduct, idCategory, price, urlImage);
     }
     public void deleteProduct(String idProduct) {
         productDAO.deleteProduct(idProduct);

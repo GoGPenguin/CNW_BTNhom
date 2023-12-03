@@ -30,10 +30,13 @@ public class ProductDAO {
             ResultSet rs = pre.executeQuery();
             while (rs.next()) {
                 Product product = new Product();
+
                 product.setIdProduct(rs.getString("idProduct"));
                 product.setNameProduct(rs.getString("nameProduct"));
                 product.setPrice(rs.getInt("price"));
                 product.setIdCategory(rs.getString("idCategory"));
+                product.setUrlImage(rs.getString("urlImage"));
+
                 productList.add(product);
             }
         } catch (SQLException e) {
@@ -58,10 +61,13 @@ public class ProductDAO {
             ResultSet rs = pre.executeQuery();
             while (rs.next()) {
                 Product product = new Product();
+
                 product.setIdProduct(rs.getString("idProduct"));
                 product.setNameProduct(rs.getString("nameProduct"));
                 product.setPrice(rs.getInt("price"));
                 product.setIdCategory(rs.getString("idCategory"));
+                product.setUrlImage(rs.getString("urlImage"));
+
                 productList.add(product);
             }
         } catch (SQLException e) {
@@ -77,24 +83,26 @@ public class ProductDAO {
             pre.setString(1, id);
             ResultSet rs = pre.executeQuery();
             while (rs.next()) {
-                product.setIdCategory(rs.getString("idProduct"));
+                product.setIdCategory(id);
                 product.setNameProduct(rs.getString("nameProduct"));
                 product.setPrice(rs.getInt("price"));
                 product.setIdCategory(rs.getString("idCategory"));
+                product.setUrlImage(rs.getString("urlImage"));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return product;
     }
-    public void addProduct(String nameProduct, String idCategory, int price) {
-        String sql = "INSERT INTO product (idProduct, nameProduct, idCategory, price) " +
+    public void addProduct(String nameProduct, String idCategory, int price, String urlImage) {
+        String sql = "INSERT INTO product (idProduct, nameProduct, idCategory, price,urlImage) " +
                 "VALUES (?, ?, ?, ?)";
         try (PreparedStatement pre = this.cnn.prepareStatement(sql)) {
             pre.setString(1, new GenerateID("product").generateID());
             pre.setString(2, nameProduct);
             pre.setString(3, idCategory);
             pre.setInt(4, price);
+            pre.setString(5, urlImage);
 
             pre.executeUpdate();
         } catch (SQLException e) {
@@ -102,13 +110,14 @@ public class ProductDAO {
         }
     }
 
-    public void updateProduct(String idProduct, String nameProduct, String idCategory, int price) {
+    public void updateProduct(String idProduct, String nameProduct, String idCategory, int price, String urlImage) {
         String sql = "UPDATE product SET nameProduct = ?, idCategory = ?, price = ? WHERE idProduct = ?";
         try (PreparedStatement pre = this.cnn.prepareStatement(sql)) {
             pre.setString(1, nameProduct);
             pre.setString(2, idCategory);
             pre.setInt(3, price);
             pre.setString(4, idProduct);
+            pre.setString(5, urlImage);
 
             pre.executeUpdate();
         } catch (SQLException e) {

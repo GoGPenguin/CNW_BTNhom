@@ -5,16 +5,23 @@ public class Product {
     private String nameProduct;
     private String idCategory;
     private int price;
+    private String urlImage;
 
     public Product() {
         super();
     }
 
-    public Product(String idProduct, String nameProduct, String idCategory, int price) {
+    public Product(String idProduct, String nameProduct, String idCategory, int price, String urlImage) {
         this.idProduct = idProduct;
         this.nameProduct = nameProduct;
         this.idCategory = idCategory;
         this.price = price;
+
+        if (urlImage == null || urlImage.isEmpty()) {
+            this.urlImage = "defaultImageUrl";  // Replace "defaultImageUrl" with your desired default value
+        } else {
+            this.urlImage = urlImage;
+        }
     }
 
     public String getIdProduct() {
@@ -47,5 +54,13 @@ public class Product {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
     }
 }
