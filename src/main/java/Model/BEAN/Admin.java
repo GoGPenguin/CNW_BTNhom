@@ -5,6 +5,7 @@ public class Admin {
     private String nameAdmin;
 
     public Admin() {
+        super();
     }
 
     public Admin(String idAdmin, String nameAdmin) {
