@@ -109,7 +109,7 @@ public class UserDAO {
     }
 
     public void updateUser(String idUser, String nameUser, String phoneUser, String addressUser, String username, String password) {
-        String sql = "UPDATE product SET nameUser = ?, phoneUser = ?, addressUser = ?, password = ? WHERE idUser = ?";
+        String sql = "UPDATE user SET nameUser = ?, phoneUser = ?, addressUser = ?, password = ? WHERE idUser = ?";
         try (PreparedStatement pre = this.cnn.prepareStatement(sql)) {
             pre.setString(1, nameUser);
             pre.setString(2, phoneUser);
