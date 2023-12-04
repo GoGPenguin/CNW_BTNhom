@@ -31,13 +31,14 @@ public class GenerateID {
     }
 
     public String generateID() {
-        String sql = String.format("SELECT CAST(SUBSTRING(%s, 2) AS UNSIGNED) FROM %s ORDER BY %s DESC LIMIT 1", field, tableName, field);
+        String sql = String.format("SELECT MAX(CAST(SUBSTRING(%s, 3) AS UNSIGNED)) AS max_a\n" +
+                "FROM %s;\n", field, tableName);
         String idSuffix = "";
         try (PreparedStatement pre = this.cnn.prepareStatement(sql);
              ResultSet rs = pre.executeQuery()) {
 
             if (rs.next()) {
-                int count = rs.getInt(1) + 1;
+                int count = rs.getInt("max_a") + 1;
                 idSuffix = (count > 9) ? prefix + count : prefix + "0" + count;
             }
         } catch (SQLException e) {
