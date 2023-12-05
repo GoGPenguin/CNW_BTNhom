@@ -1,0 +1,25 @@
+
+X
+(src/main/java/Ultilities/GenerateID.java,7\2\72aa8777d0ba7cf48fc73455d033375ea1771d7a
+O
+src/main/webapp/WEB-INF/web.xml,2\e\2e22b6edd746fa3dc40ad7276c87c8d87d72a392
+X
+(src/main/java/Model/DAO/CategoryDAO.java,9\c\9cc75e6f16e9c345aa5f5143d73d7e3a3ca68988
+^
+.src/main/java/Controller/User/ShowProduct.java,a\9\a9fa8638257c667da4cd8557dbd650f0a2ee6eb4
+R
+"src/main/java/Ultilities/Role.java,3\0\307b351ed36e093de188b5b995ff56e83687337c
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+S
+#src/main/java/Model/BEAN/Admin.java,0\1\01cd965cd6970e91ca632efcdf00db4bc4b7d2e9
+T
+$src/main/java/Model/DAO/UserDAO.java,f\0\f031fca8a56f0e295ff496e1d13822bd1fc66825
+K
+src/main/webapp/css/css.css,d\7\d7ffe9e7c01da697d140f373a478acae8eb2717e
+b
+2src/main/webapp/bootstrap520/css/bootstrap.min.css,1\f\1fc1f1e114bc5488f401f848a5d10ca961668356
+R
+"src/main/webapp/css/style_css.html,6\8\685a179e0a2f613ed3eea43a8645d5e05b68784f
+I
+src/main/webapp/index.jsp,8\e\8e6d3b70c9f5b02570779b0441540d45eceb0ded

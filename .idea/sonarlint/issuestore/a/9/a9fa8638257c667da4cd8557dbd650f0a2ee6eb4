@@ -1,0 +1,8 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(§ÍÎìùÿÿÿÿ
+r
+java:S4144"UUpdate this method so that its implementation is not identical to "doGet" on line 14.(‹¨¯¿8½¦ª‘Ã1
+\
+java:S1854":Remove this useless assignment to local variable "action".(ØÏý©üÿÿÿÿ8Â¦ª‘Ã1
+\
+java:S1854":Remove this useless assignment to local variable "action".(ØÏý©üÿÿÿÿ8É¦ª‘Ã1

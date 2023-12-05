@@ -11,17 +11,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class UserDAO {
-    private Connection cnn;
     private static UserDAO instance;
+    private Connection cnn;
+
     private UserDAO() {
         this.cnn = ConnectDB.getCnn();
     }
+
     public static synchronized UserDAO getInstance() {
         if (instance == null) {
             instance = new UserDAO();
         }
         return instance;
     }
+
     public ArrayList<User> getListUser() {
         ArrayList<User> userList = new ArrayList<>();
         String sql = "SELECT * FROM user";
@@ -109,7 +112,7 @@ public class UserDAO {
     }
 
     public void updateUser(String idUser, String nameUser, String phoneUser, String addressUser, String username, String password) {
-        String sql = "UPDATE product SET nameUser = ?, phoneUser = ?, addressUser = ?, password = ? WHERE idUser = ?";
+        String sql = "UPDATE user SET nameUser = ?, phoneUser = ?, addressUser = ?, password = ? WHERE idUser = ?";
         try (PreparedStatement pre = this.cnn.prepareStatement(sql)) {
             pre.setString(1, nameUser);
             pre.setString(2, phoneUser);
@@ -130,7 +133,7 @@ public class UserDAO {
             pre.setString(1, idUser);
 
             pre.executeUpdate();
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
