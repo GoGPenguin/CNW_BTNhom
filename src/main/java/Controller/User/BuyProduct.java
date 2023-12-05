@@ -1,4 +1,7 @@
 package Controller.User;
 
-public class BuyProduct {
+
+
+public class BuyProduct{
+
 }

@@ -95,8 +95,8 @@ public class ProductDAO {
         return product;
     }
     public void addProduct(String nameProduct, String idCategory, int price, String urlImage) {
-        String sql = "INSERT INTO product (idProduct, nameProduct, idCategory, price,urlImage) " +
-                "VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO product (idProduct, nameProduct, idCategory, price, urlImage) " +
+                "VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement pre = this.cnn.prepareStatement(sql)) {
             pre.setString(1, new GenerateID("product").generateID());
             pre.setString(2, nameProduct);
@@ -111,13 +111,14 @@ public class ProductDAO {
     }
 
     public void updateProduct(String idProduct, String nameProduct, String idCategory, int price, String urlImage) {
-        String sql = "UPDATE product SET nameProduct = ?, idCategory = ?, price = ? WHERE idProduct = ?";
+        String sql = "UPDATE product SET nameProduct = ?, idCategory = ?, price = ?, urlImage = ? WHERE idProduct = ?";
         try (PreparedStatement pre = this.cnn.prepareStatement(sql)) {
             pre.setString(1, nameProduct);
             pre.setString(2, idCategory);
             pre.setInt(3, price);
-            pre.setString(4, idProduct);
-            pre.setString(5, urlImage);
+            pre.setString(4, urlImage);
+            pre.setString(5, idProduct);
+
 
             pre.executeUpdate();
         } catch (SQLException e) {
