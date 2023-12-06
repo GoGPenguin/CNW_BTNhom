@@ -26,7 +26,7 @@ public class OrderDAO {
 
     public ArrayList<Order> getAllOrder() {
         ArrayList<Order> orderList = new ArrayList<>();
-        String sql = "SELECT * FROM order";
+        String sql = "SELECT * FROM `order`";
         try {
             PreparedStatement pre = this.cnn.prepareStatement(sql);
             ResultSet rs = pre.executeQuery();
@@ -49,7 +49,7 @@ public class OrderDAO {
 
     public ArrayList<Order> getFilterOrder(String filterInput) {
         ArrayList<Order> orderList = new ArrayList<>();
-        String sql = "SELECT * FROM order WHERE STR_TO_DATE(date, '%Y-%m-%d') = ?";
+        String sql = "SELECT * FROM `order` WHERE STR_TO_DATE(date, '%Y-%m-%d') = ?";
         try {
             PreparedStatement pre = this.cnn.prepareStatement(sql);
             pre.setString(1, filterInput);
@@ -73,7 +73,7 @@ public class OrderDAO {
 
     public Order getDetailOrderById(String idOrder) {
         Order order = new Order();
-        String sql = "SELECT * FROM order WHERE idOrder = ?";
+        String sql = "SELECT * FROM `order` WHERE idOrder = ?";
         try {
             PreparedStatement pre = this.cnn.prepareStatement(sql);
             ResultSet rs = pre.executeQuery();
@@ -95,7 +95,7 @@ public class OrderDAO {
     public int getAllIncome() {
         String sql = "SELECT SUM(product.price * order.amount) AS totalCost\n" +
                 "FROM product\n" +
-                "JOIN order ON product.idProduct = order.idProduct";
+                "JOIN `order` ON product.idProduct = order.idProduct";
         int summaryIncome = 0;
         try {
             PreparedStatement pre = this.cnn.prepareStatement(sql);
@@ -113,7 +113,7 @@ public class OrderDAO {
     public int getIncomeById(String idOrder) {
         String sql = "SELECT product.price * order.amount AS totalCost\n" +
                 "FROM product\n" +
-                "JOIN order ON product.idProduct = order.idProduct AND idOrder = ?";
+                "JOIN `order` ON product.idProduct = order.idProduct AND idOrder = ?";
         int income = 0;
         try {
             PreparedStatement pre = this.cnn.prepareStatement(sql);
@@ -130,7 +130,7 @@ public class OrderDAO {
     }
 
     public void  addOrder(String idProduct, String idUser, int amount, Date date) {
-        String sql = "INSERT INTO order (idOrder, idProduct, idUser, amount, date " +
+        String sql = "INSERT INTO `order` (idOrder, idProduct, idUser, amount, date " +
                 "VALUES (?, ?, ?, ?)";
         try (PreparedStatement pre = this.cnn.prepareStatement(sql)) {
             pre.setString(1, new GenerateID("order").generateID());
@@ -146,7 +146,7 @@ public class OrderDAO {
     }
 
     public void deleteOrder(String idOrder) {
-        String sql = "DELETE FROM order WHERE idOrder = ?";
+        String sql = "DELETE FROM `order` WHERE idOrder = ?";
         try (PreparedStatement pre = this.cnn.prepareStatement(sql)) {
             pre.setString(1, idOrder);
 
@@ -154,5 +154,90 @@ public class OrderDAO {
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+    public ArrayList<Order> getAllOrderNew()
+    {
+        ArrayList<Order> orderList = new ArrayList<>();
+        String sql = "SELECT o.idOrder, u.nameUser, u.phoneUser, u.addressUser, SUM(p.Price * o.amount) AS TotalCost, o.date FROM `order` o JOIN user u ON o.idUser = u.idUser JOIN product p ON o.idProduct = p.idProduct GROUP BY o.idOrder, u.nameUser, u.phoneUser, u.addressUser, o.date";
+        try {
+            PreparedStatement pre = this.cnn.prepareStatement(sql);
+            ResultSet rs = pre.executeQuery();
+            while (rs.next()) {
+                Order order = new Order(rs.getString("idOrder"),rs.getString("nameUser"),rs.getString("addressUser"),rs.getString("phoneUser"),rs.getInt("TotalCost"),rs.getDate("date"));
+                orderList.add(order);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return orderList;
+    }
+    public ArrayList<Order> getFilterOrderMultipleColumn(String idOrder, String fullname, String dateSearch) {
+        ArrayList<Order> orderList = new ArrayList<>();
+        String sql;
+        if(!dateSearch.equals(""))
+        {
+            sql = "SELECT o.idOrder, u.nameUser, u.phoneUser, u.addressUser, SUM(p.Price * o.amount) AS TotalCost, o.date " +
+                    "FROM `order` o " +
+                    "JOIN user u ON o.idUser = u.idUser " +
+                    "JOIN product p ON o.idProduct = p.idProduct " +
+                    "WHERE " +
+                    "    o.idOrder LIKE ? " +
+                    "    AND u.nameUser LIKE ? " +
+                    "    AND STR_TO_DATE(o.date, '%Y-%m-%d') = ? " +
+                    "GROUP BY o.idOrder, u.nameUser, u.phoneUser, u.addressUser, o.date";
+            try {
+                PreparedStatement pre = this.cnn.prepareStatement(sql);
+                pre.setString(1, "%" + idOrder + "%");
+                pre.setString(2, "%" + fullname + "%");
+                pre.setString(3, dateSearch);
+                ResultSet rs = pre.executeQuery();
+                while (rs.next()) {
+                    Order order = new Order(
+                            rs.getString("idOrder"),
+                            rs.getString("nameUser"),
+                            rs.getString("addressUser"),
+                            rs.getString("phoneUser"),
+                            rs.getInt("TotalCost"),
+                            rs.getDate("date")
+                    );
+                    orderList.add(order);
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            return orderList;
+
+        }
+        else {
+            sql = "SELECT o.idOrder, u.nameUser, u.phoneUser, u.addressUser, SUM(p.Price * o.amount) AS TotalCost, o.date " +
+                    "FROM `order` o " +
+                    "JOIN user u ON o.idUser = u.idUser " +
+                    "JOIN product p ON o.idProduct = p.idProduct " +
+                    "WHERE " +
+                    "    o.idOrder LIKE ? " +
+                    "    AND u.nameUser LIKE ? " +
+                    "GROUP BY o.idOrder, u.nameUser, u.phoneUser, u.addressUser, o.date";
+            try {
+                PreparedStatement pre = this.cnn.prepareStatement(sql);
+                pre.setString(1, "%" + idOrder + "%");
+                pre.setString(2, "%" + fullname + "%");
+                ResultSet rs = pre.executeQuery();
+                while (rs.next()) {
+                    Order order = new Order(
+                            rs.getString("idOrder"),
+                            rs.getString("nameUser"),
+                            rs.getString("addressUser"),
+                            rs.getString("phoneUser"),
+                            rs.getInt("TotalCost"),
+                            rs.getDate("date")
+                    );
+                    orderList.add(order);
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            return orderList;
+        }
+
     }
 }

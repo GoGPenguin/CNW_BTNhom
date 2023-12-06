@@ -38,5 +38,9 @@ public class CategoryBO {
     public void deleteCatergory(String idCategory) {
         deleteCatergory(idCategory);
     }
+    public ArrayList<Category> filterCategory(String id, String name)
+    {
+        return categoryDAO.filterCategory(id,name);
+    }
 
 }

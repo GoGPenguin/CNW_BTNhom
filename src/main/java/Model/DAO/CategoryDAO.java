@@ -98,5 +98,23 @@ public class CategoryDAO {
             throw new RuntimeException(e);
         }
     }
+    public ArrayList<Category> filterCategory(String id,String name)
+    {
+        ArrayList<Category> listCategory = new ArrayList<>();
+        String sql = "select * from category where idCategory like ? and nameCategory like ?";
+        try {
+            PreparedStatement pre = this.cnn.prepareStatement(sql);
+            pre.setString(1, "%" + id + "%");
+            pre.setString(2, "%" + name + "%");
+            ResultSet rs = pre.executeQuery();
+            while(rs.next())
+            {
+                listCategory.add(new Category(rs.getString("idCategory"), rs.getString("nameCategory")));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listCategory;
+    }
 
 }
