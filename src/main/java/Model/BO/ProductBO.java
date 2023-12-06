@@ -27,7 +27,9 @@ public class ProductBO {
     public ArrayList<Product> getFilterListProduct(String filterInput) {
         return productDAO.filterProduct(filterInput);
     }
-
+    public ArrayList<Product> getProductByCategoryId(String categoryId){
+        return productDAO.filterProductByCategoryId(categoryId);
+    }
     public Product getProductById(String id) {
         return productDAO.getDetailProductById(id);
     }

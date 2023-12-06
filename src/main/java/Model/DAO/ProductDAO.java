@@ -75,6 +75,33 @@ public class ProductDAO {
         }
         return productList;
     }
+    public ArrayList<Product> filterProductByCategoryId(String categoryId) {
+        ArrayList<Product> productList = new ArrayList<>();
+        String sql = "SELECT * " +
+                "FROM product " +
+                "JOIN category ON product.idCategory = category.idCategory " +
+                "WHERE product.idCategory=?; ";
+
+        try {
+            PreparedStatement pre = this.cnn.prepareStatement(sql);
+            pre.setString(1, categoryId);
+            ResultSet rs = pre.executeQuery();
+            while (rs.next()) {
+                Product product = new Product();
+
+                product.setIdProduct(rs.getString("idProduct"));
+                product.setNameProduct(rs.getString("nameProduct"));
+                product.setPrice(rs.getInt("price"));
+                product.setIdCategory(rs.getString("idCategory"));
+                product.setUrlImage(rs.getString("urlImage"));
+
+                productList.add(product);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return productList;
+    }
     public Product getDetailProductById(String id) {
         Product product = new Product();
         String sql = "SELECT * FROM product WHERE idProduct = ?";

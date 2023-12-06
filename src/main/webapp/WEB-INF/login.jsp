@@ -11,6 +11,8 @@
     <title>Đăng nhập</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"/>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous">
@@ -27,13 +29,22 @@
         <div class="div-login">
             <div class="title">Đăng Nhập</div>
             <hr>
-            <form method="post" action="/login">
-                <label for="email">Email</label>
-                <input type="text" name="email" id="email" style="width: 100%">
-                <br><br>
-                <label for="password">Password</label>
-                <input type="password" name="email" id="password" style="width: 100%">
-                <br><br>
+            <form method="post" action="/login" autocomplete="off">
+                <p>
+                    <label for="username">Username <span class="text-danger">(*)</span></label>
+                    <input type="text" name="email" class="form-control" id="username" style="width: 93%; height: 30px" onblur="empty()">
+                </p>
+                <span id="error1" class="text-danger"></span>
+                <p>
+                    <label for="password">Password <span class="text-danger">(*)</span></label>
+                    <input type="password" class="form-control" name="password" id="password" style="width: 93%; height: 30px" onblur="empty()">
+                    <i class="bi bi-eye-slash" id="togglePassword"></i>
+                </p>
+                <span id="error2" class="text-danger"></span>
+                <%if ((String) request.getParameter("error") != null) {%>
+                <span id="error" class="text-danger"><%=(String) request.getParameter("error")%></span>
+                <%}%>
+                <br>
                 <button type="submit" class="btn btn-primary" style="width: 100%">Đăng nhập</button>
             </form>
             <div class="div-Or"><span>OR</span></div>
@@ -44,4 +55,33 @@
     </div>
 </div>
 </body>
+<script>
+    function empty() {
+        let username = document.getElementById('username').value;
+        let password = document.getElementById('password').value;
+        if (username === "") {
+            document.getElementById('error1').innerText = "Phải điền tên người dùng!";
+        } else if (password === "") {
+            document.getElementById('error2').innerText = "Phải điền mật khẩu!";
+        } else {
+            document.getElementById('error1').innerText = "";
+            document.getElementById('error2').innerText = "";
+        }
+    }
+</script>
+<script>
+    const togglePassword = document
+        .querySelector('#togglePassword');
+    const password = document.querySelector('#password');
+    togglePassword.addEventListener('click', () => {
+        // Toggle the type attribute using
+        // getAttribure() method
+        const type = password
+            .getAttribute('type') === 'password' ?
+            'text' : 'password';
+        password.setAttribute('type', type);
+        // Toggle the eye and bi-eye icon
+        this.classList.toggle('bi-eye');
+    });
+</script>
 </html>

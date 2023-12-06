@@ -1,5 +1,6 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="Model.BEAN.Product" %><%--
+<%@ page import="Model.BEAN.Product" %>
+<%@ page import="Model.BEAN.User" %><%--
   Created by IntelliJ IDEA.
   User: ACER
   Date: 04/12/2023
@@ -23,9 +24,14 @@
     <link rel="stylesheet" href="css/css.css">
 </head>
 <body>
+<%
+    ArrayList<Product> productList1 = (ArrayList<Product>) request.getAttribute("productList");
+
+
+%>
 <div class="navbar header-container container row">
     <div style="width: 100%">
-        <ul class="list-group list-group-horizontal" style="width: 100%; justify-content: space-around">
+        <ul class="list-group list-group-horizontal" style="width: 100%; justify-content: space-between">
             <li class="list-group-item" style="border: none">
                 <div>
                     <a href="index.jsp"><img src="image/logo.png" alt="Logo" width="50" height="50"></a>
@@ -39,20 +45,35 @@
                     </button>
                 </form>
             </li>
+            <%User user = (User) request.getAttribute("user");
+                if (user != null){
+            %>
+            <li class="list-group-item" style="border: none">
+                <span style="">
+                    <a href="/idUser">
+                        <button style="padding: 0; border: none; background: none; color: blue"><%=user.getNameUser()%></button>
+                    </a>
+                </span>
+                <span style="">
+                    <a href="/logout">
+                        <button style="padding: 0; border: none; background: none; color: blue">Đăng xuất</button>
+                    </a>
+                </span>
+            </li>
+            <%} else {%>
             <li class="list-group-item" style="border: none">
                 <span style="">
                     <a href="/login">
                         <button style="padding: 0; border: none; background: none; color: blue">Đăng nhập</button>
                     </a>
                 </span>
-            </li>
-            <li class="list-group-item" style="border: none">
                 <span style="">
                     <a href="/register">
                         <button style="padding: 0; border: none; background: none; color: blue">Đăng kí</button>
                     </a>
                 </span>
             </li>
+            <%}%>
         </ul>
     </div>
 </div>
@@ -62,27 +83,29 @@
             <li class="list-group-item"><b>Danh mục</b></li>
             <li class="list-group-item">
                 <span style="color: blue">
-                    <button style="padding: 0; border: none; background: none"> Tất cả</button>
+                    <a href="">
+                        <button style="padding: 0; border: none; background: none" onclick="filterProduct('')"> Tất cả</button>
+                    </a>
                 </span>
             </li>
             <li class="list-group-item">
                 <span style="color: blue">
-                    <button style="padding: 0; border: none; background: none">Bánh ngọt</button>
+                    <button style="padding: 0; border: none; background: none" onclick="filterProduct(1)">Bánh ngọt</button>
                 </span>
             </li>
             <li class="list-group-item">
                 <span style="color: blue">
-                    <button style="padding: 0; border: none; background: none">Bánh bông lan</button>
+                    <button style="padding: 0; border: none; background: none" onclick="filterProduct(2)">Bánh bông lan</button>
                 </span>
             </li>
             <li class="list-group-item">
                 <span style="color: blue">
-                    <button style="padding: 0; border: none; background: none">Bánh mì</button>
+                    <button style="padding: 0; border: none; background: none" onclick="filterProduct(3)">Bánh mì</button>
                 </span>
             </li>
             <li class="list-group-item">
                 <span style="color: blue">
-                    <button style="padding: 0; border: none; background: none">Bánh mặn</button>
+                    <button style="padding: 0; border: none; background: none" onclick="filterProduct(4)">Bánh mặn</button>
                 </span>
             </li>
         </ul>
@@ -90,7 +113,7 @@
     <div class="col-10">
         <div class="content-three"
              style="padding: 10px; box-shadow: rgba(0, 0, 0, 0.1) 2px 2px 10px 5px; border-radius: 10px; margin-top: 20px;">
-            <div class="containerBook">
+            <div class="containerBook" id="productList" style="justify-content: flex-start;">
                 <%
                     ArrayList<Product> productList = (ArrayList<Product>) request.getAttribute("productList");
                     if (productList == null) {
@@ -115,4 +138,5 @@
     </div>
 </div>
 </body>
+<script src="js/filterProduct.js"></script>
 </html>

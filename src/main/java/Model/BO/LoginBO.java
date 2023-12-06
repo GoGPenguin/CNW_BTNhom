@@ -15,7 +15,10 @@ public class LoginBO {
         }
         return instance;
     }
-    public Role checkLogin(String username, String password) {
+    public Role getRole(String username, String password) {
+        return loginDAO.getRole(username, password);
+    }
+    public Object checkLogin(String username, String password) {
         return loginDAO.checkLogin(username, password);
     }
 }
