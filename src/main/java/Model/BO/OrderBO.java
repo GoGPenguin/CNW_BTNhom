@@ -42,4 +42,12 @@ public class OrderBO {
     public void deleteOrder(String idOrder) {
         deleteOrder(idOrder);
     }
+
+    public ArrayList<Order> getAllOrderNew() {
+        return orderDAO.getAllOrderNew();
+    }
+
+    public ArrayList<Order> getFilterOrderMultipleColumn(String idOrder,String fullname,String dateSearch) {
+        return orderDAO.getFilterOrderMultipleColumn(idOrder,fullname,dateSearch);
+    }
 }

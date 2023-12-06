@@ -1,6 +1,7 @@
 package Model.DAO;
 
 import Database.ConnectDB;
+import Model.BEAN.Category;
 import Model.BEAN.Product;
 import Ultilities.GenerateID;
 
@@ -122,8 +123,8 @@ public class ProductDAO {
         return product;
     }
     public void addProduct(String nameProduct, String idCategory, int price, String urlImage) {
-        String sql = "INSERT INTO product (idProduct, nameProduct, idCategory, price,urlImage) " +
-                "VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO product (idProduct, nameProduct, idCategory, price, urlImage) " +
+                "VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement pre = this.cnn.prepareStatement(sql)) {
             pre.setString(1, new GenerateID("product").generateID());
             pre.setString(2, nameProduct);
@@ -138,13 +139,14 @@ public class ProductDAO {
     }
 
     public void updateProduct(String idProduct, String nameProduct, String idCategory, int price, String urlImage) {
-        String sql = "UPDATE product SET nameProduct = ?, idCategory = ?, price = ? WHERE idProduct = ?";
+        String sql = "UPDATE product SET nameProduct = ?, idCategory = ?, price = ?, urlImage = ? WHERE idProduct = ?";
         try (PreparedStatement pre = this.cnn.prepareStatement(sql)) {
             pre.setString(1, nameProduct);
             pre.setString(2, idCategory);
             pre.setInt(3, price);
-            pre.setString(4, idProduct);
-            pre.setString(5, urlImage);
+            pre.setString(4, urlImage);
+            pre.setString(5, idProduct);
+
 
             pre.executeUpdate();
         } catch (SQLException e) {
@@ -161,6 +163,81 @@ public class ProductDAO {
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public ArrayList<Product> filterProductMultipleColumn(String nameProduct,String nameCategory,String priceSearch) {
+
+        ArrayList<Product> productList = new ArrayList<>();
+        if(!priceSearch.equals(""))
+        {
+            String sql = "SELECT * " +
+                    "FROM product " +
+                    "JOIN category ON product.idCategory = category.idCategory " +
+                    "WHERE nameProduct like ? and " +
+                    "CAST(price AS CHAR) = ? and " +
+                    "category.nameCategory like ?";
+
+            try {
+                PreparedStatement pre = this.cnn.prepareStatement(sql);
+                pre.setString(1, "%" + nameProduct + "%" );
+                pre.setString(2, priceSearch);
+                pre.setString(3, "%" + nameCategory + "%");
+                ResultSet rs = pre.executeQuery();
+                while (rs.next()) {
+                    Product product = new Product();
+                    product.setIdProduct(rs.getString("idProduct"));
+                    product.setNameProduct(rs.getString("nameProduct"));
+                    product.setPrice(rs.getInt("price"));
+                    product.setIdCategory(rs.getString("idCategory"));
+                    product.setUrlImage(rs.getString("urlImage"));
+                    productList.add(product);
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            return productList;
+        }
+        else {
+            String sql = "SELECT * " +
+                    "FROM product " +
+                    "JOIN category ON product.idCategory = category.idCategory " +
+                    "WHERE nameProduct like ? and " +
+                    "category.nameCategory  like ?";
+
+            try {
+                PreparedStatement pre = this.cnn.prepareStatement(sql);
+                pre.setString(1, "%" + nameProduct + "%" );
+                pre.setString(2, "%" + nameCategory + "%");
+                ResultSet rs = pre.executeQuery();
+                while (rs.next()) {
+                    Product product = new Product();
+                    product.setIdProduct(rs.getString("idProduct"));
+                    product.setNameProduct(rs.getString("nameProduct"));
+                    product.setPrice(rs.getInt("price"));
+                    product.setIdCategory(rs.getString("idCategory"));
+                    product.setUrlImage(rs.getString("urlImage"));
+                    productList.add(product);
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            return productList;
+        }
+
+    }
+    public ArrayList<Category> getListNameCategory() {
+        ArrayList<Category> nameCategoryList = new ArrayList<>();
+        String sql = "SELECT * FROM category";
+        try {
+            PreparedStatement pre = this.cnn.prepareStatement(sql);
+            ResultSet rs = pre.executeQuery();
+            while (rs.next()) {
+                nameCategoryList.add(new Category(rs.getString("idCategory"),rs.getString("nameCategory")));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return nameCategoryList;
     }
 
 }

@@ -137,4 +137,29 @@ public class UserDAO {
             throw new RuntimeException(e);
         }
     }
+    public ArrayList<User> getFilterListUserMultipleColumn(String textUsername,String textFullname,String textPhone) {
+        ArrayList<User> userList = new ArrayList<>();
+        String sql = "SELECT * FROM user WHERE username like ? and nameUser like ? and phoneUser like ?";
+        try {
+            PreparedStatement pre = this.cnn.prepareStatement(sql);
+            pre.setString(1,"%" + textUsername + "%");
+            pre.setString(2,"%" + textFullname + "%");
+            pre.setString(3,"%" + textPhone + "%");
+            ResultSet rs = pre.executeQuery();
+            while (rs.next()) {
+                User user = new User();
+                user.setIdUser(rs.getString("idUser"));
+                user.setNameUser(rs.getString("nameUser"));
+                user.setPhoneUser(rs.getString("phoneUser"));
+                user.setAddressUser(rs.getString("addressUser"));
+                user.setUsername(rs.getString("username"));
+                user.setPassword(rs.getString("password"));
+
+                userList.add(user);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return userList;
+    }
 }

@@ -35,4 +35,8 @@ public class UserBO {
     public void deleteUser(String idUser) {
         userDAO.deleteUser(idUser);
     }
+
+    public ArrayList<User> getFilterListUserMultipleColumn(String username,String nameUser,String phone) {
+        return userDAO.getFilterListUserMultipleColumn(username,nameUser,phone);
+    }
 }

@@ -1,5 +1,6 @@
 package Model.BO;
 
+import Model.BEAN.Category;
 import Model.BEAN.Product;
 import Model.DAO.ProductDAO;
 
@@ -44,5 +45,12 @@ public class ProductBO {
 
     public void deleteProduct(String idProduct) {
         productDAO.deleteProduct(idProduct);
+    }
+
+    public ArrayList<Product> filterProductMultipleColumn(String nameProduct,String nameCategory,String priceSearch) {
+        return productDAO.filterProductMultipleColumn(nameProduct,nameCategory,priceSearch);
+    }
+    public ArrayList<Category> getListNameCategory() {
+        return productDAO.getListNameCategory();
     }
 }

@@ -9,6 +9,11 @@ public class Order {
     private int amount;
     private Date date;
 
+    private int TotalCost;
+    private String nameUser;
+    private String phoneUser;
+    private String addressUser;
+
     public Order() {
         super();
     }
@@ -59,5 +64,47 @@ public class Order {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public Order(String idOrder,String nameUser,String addressUser, String phoneUser,int TotalCost,Date date)
+    {
+        this.idOrder = idOrder;
+        this.nameUser = nameUser;
+        this.addressUser = addressUser;
+        this.phoneUser = phoneUser;
+        this.TotalCost = TotalCost;
+        this.date = date;
+    }
+
+    public int getTotalCost() {
+        return TotalCost;
+    }
+
+    public void setTotalCost(int totalCost) {
+        TotalCost = totalCost;
+    }
+
+    public String getNameUser() {
+        return nameUser;
+    }
+
+    public void setNameUser(String nameUser) {
+        this.nameUser = nameUser;
+    }
+
+    public String getPhoneUser() {
+        return phoneUser;
+    }
+
+    public void setPhoneUser(String phoneUser) {
+        this.phoneUser = phoneUser;
+    }
+
+    public String getAddressUser() {
+        return addressUser;
+    }
+
+    public void setAddressUser(String addressUser) {
+        this.addressUser = addressUser;
     }
 }
