@@ -46,8 +46,6 @@ h
 S
 #src/main/webapp/js/filterProduct.js,b\d\bd763484cb06e49ba9e536ef069359d6f86d9ca0
 T
-$src/main/java/Controller/Logout.java,5\a\5af35d48a8162adae2192c6106848cae92f118f6
-T
 $src/main/java/Model/DAO/UserDAO.java,f\0\f031fca8a56f0e295ff496e1d13822bd1fc66825
 ]
 -src/main/java/Controller/User/DetailUser.java,4\5\4561c5d1f1853c86263af08a099b9580fd88f15b
