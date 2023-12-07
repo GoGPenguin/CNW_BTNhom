@@ -1,4 +1,5 @@
-<%@ page import="Model.BEAN.User" %><%--
+<%@ page import="Model.BEAN.User" %>
+<%@ page import="Model.BEAN.Admin" %><%--
   Created by IntelliJ IDEA.
   User: ACER
   Date: 06/12/2023
@@ -32,7 +33,6 @@
 //            if (user != null) {
             if (session != null && session.getAttribute("user") != null) {
                 User user = (User) session.getAttribute("user");
-
         %>
         <div class="btn-group">
             <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown"
@@ -40,23 +40,102 @@
                 <%=user.getNameUser()%>
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/user?id=<%=user.getIdUser()%>">Thông tin cá nhân</a></li>
+                <li><a class="dropdown-item" href="/user?id=<%=user.getIdUser()%>"
+                       data-bs-toggle="modal" data-bs-target="#modalDetail"
+                       onclick="showDetailForm('<%=user.getIdUser()%>', '<%=user.getUsername()%>',
+                               '<%=user.getPassword()%>', '<%=user.getNameUser()%>',
+                               '<%=user.getPhoneUser()%>', '<%=user.getAddressUser()%>')">Thông tin cá nhân</a>
+                </li>
+                <li><a class="dropdown-item" href="/logout">Đăng xuất</a></li>
+            </ul>
+            <a href="/buy"><i class="far fa-shopping-cart"></i></a>
+        </div>
+        <% }
+            if (session != null && session.getAttribute("admin") != null) {
+                Admin admin = (Admin) session.getAttribute("admin");
+        %>
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                <%=admin.getNameAdmin()%>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item"
+                       data-bs-toggle="modal" data-bs-target="#modalDetail">Thông tin cá nhân</a>
+                </li>
                 <li><a class="dropdown-item" href="/logout">Đăng xuất</a></li>
             </ul>
         </div>
-        <%} else {%>
+        <%
+            }
+            if (session.getAttribute("admin") == null && session.getAttribute("user") == null) {
+        %>
         <a href="/login">
             <button class="btn btn-primary">
-                Đăng nhập <i class="fas fa-sign-in-alt"></i>
+                Đăng nhập
             </button>
         </a>
         <a href="/register">
             <button class="btn btn-primary">
-                Đăng kí
+                Đăng kí <i class="fas fa-sign-in-alt"></i>
             </button>
         </a>
         <%}%>
     </div>
 </div>
+<div class="modal fade" id="modalDetail" data-bs-backdrop="static" data-bs-keyboard="false"
+     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Chi tiết người dùng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <form action="/user?action=handleUpdateUser" method="post">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="InputEmailUpdate" class="form-label">Email address</label>
+                        <input type="text" class="form-control" id="InputEmailUpdate" name="InputEmailUpdate"
+                               aria-describedby="emailHelp" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputPasswordUpdate" class="form-label">Password</label>
+                        <input type="text" class="form-control" id="InputPasswordUpdate" name="InputPasswordUpdate">
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputFullNameUpdate" class="form-label">FullName</label>
+                        <input type="text" class="form-control" id="InputFullNameUpdate" name="InputFullNameUpdate">
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputPhoneNumberUpdate" class="form-label">Phone Number</label>
+                        <input type="text" class="form-control" id="InputPhoneNumberUpdate" name="InputPhoneNumberUpdate">
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputAddressUpdate" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="InputAddressUpdate" name="InputAddressUpdate">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <input type="hidden" name="ID" value="" id="InputUpdateId">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 </body>
+<script>
+    function showDetailForm(id, username, password, nameUser, phoneNum, address) {
+        document.getElementById('InputUpdateId').value = id;
+        document.getElementById('InputEmailUpdate').value = username;
+        document.getElementById('InputFullNameUpdate').value = nameUser;
+        document.getElementById('InputPasswordUpdate').value = password;
+        document.getElementById('InputPhoneNumberUpdate').value = phoneNum;
+        document.getElementById('InputAddressUpdate').value = address;
+    }
+</script>
 </html>

@@ -5,8 +5,6 @@ b
 2src/main/webapp/bootstrap520/css/bootstrap.min.css,1\f\1fc1f1e114bc5488f401f848a5d10ca961668356
 R
 "src/main/webapp/css/style_css.html,6\8\685a179e0a2f613ed3eea43a8645d5e05b68784f
-]
--src/main/java/Controller/User/BuyProduct.java,e\e\eeeea6e0cd673ebf77740c329418384c7c5a5991
 b
 2src/main/java/Controller/Admin/ManageCategory.java,a\3\a3ed62c31debcfb03598631b4df23b97316cdc08
 _
@@ -39,13 +37,9 @@ K
 src/main/webapp/css/css.css,d\7\d7ffe9e7c01da697d140f373a478acae8eb2717e
 ^
 .src/main/webapp/bootstrap520/css/bootstrap.css,1\0\1038622b9c19b90853c6f6981b198e846aed9734
-J
-src/main/webapp/header.jsp,0\5\051b0ac501a865704d2b6b36f8cfabfa311becc2
 h
 8src/main/webapp/bootstrap520/css/bootstrap-utilities.css,6\8\681cea79053387f4da10e2df3617b5078cfb25f2
 S
 #src/main/webapp/js/filterProduct.js,b\d\bd763484cb06e49ba9e536ef069359d6f86d9ca0
 T
 $src/main/java/Model/DAO/UserDAO.java,f\0\f031fca8a56f0e295ff496e1d13822bd1fc66825
-]
--src/main/java/Controller/User/DetailUser.java,4\5\4561c5d1f1853c86263af08a099b9580fd88f15b

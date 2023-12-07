@@ -13,8 +13,6 @@ a
 1src/main/java/Controller/Admin/ManageProduct.java,e\5\e52bdbc87cd391011a60bc750bc77620ddaf390b
 X
 (src/main/java/Ultilities/UTF8Filter.java,f\4\f4a57ae713d10da337dcfffa62b5b031aea9d712
-]
--src/main/java/Controller/User/BuyProduct.java,e\e\eeeea6e0cd673ebf77740c329418384c7c5a5991
 O
 src/main/webapp/WEB-INF/web.xml,2\e\2e22b6edd746fa3dc40ad7276c87c8d87d72a392
 R
@@ -43,9 +41,5 @@ h
 8src/main/webapp/bootstrap520/css/bootstrap-utilities.css,6\8\681cea79053387f4da10e2df3617b5078cfb25f2
 S
 #src/main/webapp/js/filterProduct.js,b\d\bd763484cb06e49ba9e536ef069359d6f86d9ca0
-J
-src/main/webapp/header.jsp,0\5\051b0ac501a865704d2b6b36f8cfabfa311becc2
 T
 $src/main/java/Model/DAO/UserDAO.java,f\0\f031fca8a56f0e295ff496e1d13822bd1fc66825
-]
--src/main/java/Controller/User/DetailUser.java,4\5\4561c5d1f1853c86263af08a099b9580fd88f15b

@@ -86,8 +86,12 @@ public class LoginDAO {
                 try (ResultSet userRs = userPre.executeQuery()) {
                     if (userRs.next()) {
                         String idUser = userRs.getString("idUser");
+                        String username1 = userRs.getString("username");
                         String nameUser = userRs.getString("nameUser");
-                        User user = new User(idUser, nameUser);
+                        String pass = userRs.getString("password");
+                        String phoneUser = userRs.getString("phoneUser");
+                        String addressUser = userRs.getString("addressUser");
+                        User user = new User(idUser, username1, pass, nameUser, phoneUser, addressUser);
                         return user;
                     }
                 }

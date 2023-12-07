@@ -62,7 +62,7 @@
             %>
         </ul>
     </div>
-    <div class="col-10">
+    <div class="col-9">
         <div class="content-three"
              style="padding: 10px; box-shadow: rgba(0, 0, 0, 0.1) 2px 2px 10px 5px; border-radius: 10px; margin-top: 20px;">
             <div class="containerBook" id="productList" style="justify-content: flex-start;">
