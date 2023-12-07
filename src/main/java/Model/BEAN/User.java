@@ -21,6 +21,11 @@ public class User {
         this.addressUser = addressUser;
     }
 
+    public User(String idUser, String nameUser) {
+        this.idUser = idUser;
+        this.nameUser = nameUser;
+    }
+
     public String getIdUser() {
         return idUser;
     }

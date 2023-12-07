@@ -11,17 +11,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class UserDAO {
-    private Connection cnn;
     private static UserDAO instance;
+    private Connection cnn;
+
     private UserDAO() {
         this.cnn = ConnectDB.getCnn();
     }
+
     public static synchronized UserDAO getInstance() {
         if (instance == null) {
             instance = new UserDAO();
         }
         return instance;
     }
+
     public ArrayList<User> getListUser() {
         ArrayList<User> userList = new ArrayList<>();
         String sql = "SELECT * FROM user";
@@ -91,6 +94,29 @@ public class UserDAO {
         return user;
     }
 
+    public ArrayList<User> getUserByUsername(String username) {
+        ArrayList<User> users = new ArrayList<>();
+        User user = new User();
+        String sql = "SELECT * FROM user where username = ?";
+        try {
+            PreparedStatement pre = this.cnn.prepareStatement(sql);
+            pre.setString(1, username);
+            ResultSet rs = pre.executeQuery();
+            while (rs.next()) {
+                user.setIdUser(rs.getString("idUser"));
+                user.setNameUser(rs.getString("nameUser"));
+                user.setPhoneUser(rs.getString("phoneUser"));
+                user.setAddressUser(rs.getString("addressUser"));
+                user.setUsername(rs.getString("username"));
+                user.setPassword(rs.getString("password"));
+                users.add(user);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return users;
+    }
+
     public void addUser(String nameUser, String phoneUser, String addressUser, String username, String password) {
         String sql = "INSERT INTO user (idUser, nameUser, phoneUser, addressUser, username, password) " +
                 "VALUES (?, ?, ?, ?, ?, ?)";
@@ -130,7 +156,7 @@ public class UserDAO {
             pre.setString(1, idUser);
 
             pre.executeUpdate();
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
