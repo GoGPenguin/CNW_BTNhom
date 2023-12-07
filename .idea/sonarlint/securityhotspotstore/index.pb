@@ -19,16 +19,10 @@ R
 "src/main/java/Ultilities/Role.java,3\0\307b351ed36e093de188b5b995ff56e83687337c
 S
 #src/main/java/Model/BEAN/Admin.java,0\1\01cd965cd6970e91ca632efcdf00db4bc4b7d2e9
-U
-%src/main/java/Model/BO/ProductBO.java,c\9\c90138b526ac32660424eae45c2b689bfdb709d1
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-W
-'src/main/java/Model/DAO/ProductDAO.java,7\8\780fa0ae317701a3101c3234a70dc86b05b7a42a
 U
 %src/main/java/Database/ConnectDB.java,f\7\f7177017961c5fe07b248fb62405dadc6367ab56
-U
-%src/main/java/Model/BEAN/Product.java,f\1\f1dd6424ed7b90e271649734fe6ae5a94f75526c
 \
 ,src/main/webapp/bootstrap520/js/bootstrap.js,f\3\f34840a435c8ddc21cb3c3a7f2d8de651d8811bc
 K

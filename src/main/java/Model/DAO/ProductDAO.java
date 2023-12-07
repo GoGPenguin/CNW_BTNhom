@@ -50,13 +50,13 @@ public class ProductDAO {
         String sql = "SELECT * " +
                 "FROM product " +
                 "JOIN category ON product.idCategory = category.idCategory " +
-                "WHERE nameProduct = ? OR " +
+                "WHERE nameProduct like ? OR " +
                 "CAST(price AS CHAR) = ? OR " +
                 "category.nameCategory = ?";
 
         try {
             PreparedStatement pre = this.cnn.prepareStatement(sql);
-            pre.setString(1, filterInput);
+            pre.setString(1, "%" + filterInput + "%");
             pre.setString(2, filterInput);
             pre.setString(3, filterInput);
             ResultSet rs = pre.executeQuery();

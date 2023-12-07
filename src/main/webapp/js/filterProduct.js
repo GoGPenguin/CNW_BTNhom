@@ -27,6 +27,11 @@ function createProductElement(product) {
     const wrapper = document.createElement('div');
     wrapper.className = 'wrapper';
 
+    const anchor = document.createElement('a');
+    anchor.href = '/product?id=' + product.idProduct;
+    anchor.style.color = 'black';
+    anchor.style.textDecoration = 'none';
+
     const thumbnail = document.createElement('div');
     thumbnail.className = 'thumbnail';
     const thumbnailImage = document.createElement('img');
@@ -42,10 +47,13 @@ function createProductElement(product) {
     price.className = 'price';
     price.textContent = product.price + ' ₫';
 
-    wrapper.appendChild(thumbnail);
-    wrapper.appendChild(text);
-    wrapper.appendChild(price);
+    anchor.appendChild(thumbnail);
+    anchor.appendChild(text);
+    anchor.appendChild(price);
+
+    wrapper.appendChild(anchor);
 
     return wrapper;
 }
+
 

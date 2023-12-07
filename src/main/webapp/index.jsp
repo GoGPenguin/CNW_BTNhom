@@ -28,7 +28,7 @@
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
-<div class="row">
+<div class="row d-flex" style="max-width: 100%">
     <div class="col-2" style="margin-top: 10px">
         <ul class="list-group">
             <li class="list-group-item" style="text-align: center"><b>Danh mục</b></li>
@@ -76,12 +76,14 @@
                     for (int i = 0; i < productList.size(); i++) {
                 %>
                 <div class="wrapper">
-                    <div class="thumbnail">
-                        <img src="/uploads/<%=productList.get(i).getUrlImage()%>" alt="cover">
-                    </div>
-                    <div class="text fw-bold"><%=productList.get(i).getNameProduct()%>
-                    </div>
-                    <div class="price"><%=productList.get(i).getPrice()%>&nbsp;₫</div>
+                    <a href="/product?id=<%=productList.get(i).getIdProduct()%>" style="color: black; text-decoration: none">
+                        <div class="thumbnail">
+                            <img src="/uploads/<%=productList.get(i).getUrlImage()%>" alt="cover">
+                        </div>
+                        <div class="text fw-bold"><%=productList.get(i).getNameProduct()%>
+                        </div>
+                        <div class="price"><%=productList.get(i).getPrice()%>&nbsp;₫</div>
+                    </a>
                 </div>
                 <%
                         }
@@ -90,6 +92,7 @@
             </div>
         </div>
     </div>
+    <div class="col-1"></div>
 </div>
 </body>
 <script src="js/filterProduct.js"></script>
