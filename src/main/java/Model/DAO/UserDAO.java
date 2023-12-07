@@ -94,8 +94,7 @@ public class UserDAO {
         return user;
     }
 
-    public ArrayList<User> getUserByUsername(String username) {
-        ArrayList<User> users = new ArrayList<>();
+    public User getUserByUsername(String username) {
         User user = new User();
         String sql = "SELECT * FROM user where username = ?";
         try {
@@ -109,12 +108,13 @@ public class UserDAO {
                 user.setAddressUser(rs.getString("addressUser"));
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
-                users.add(user);
+
+                return user;
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return users;
+        return null;
     }
 
     public void addUser(String nameUser, String phoneUser, String addressUser, String username, String password) {

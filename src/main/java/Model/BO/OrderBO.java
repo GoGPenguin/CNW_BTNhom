@@ -39,6 +39,10 @@ public class OrderBO {
     public void addOrder(String idProduct, String idUser, int amount, Date date) {
         orderDAO.addOrder(idProduct, idUser, amount, date);
     }
+
+    public void  addOrderMultipleProduct(String idOrder, String idProduct, String idUser, int amount, Date date) {
+        orderDAO.addOrderMultipleProduct(idOrder, idProduct, idUser, amount, date);
+    }
     public void deleteOrder(String idOrder) {
         deleteOrder(idOrder);
     }

@@ -28,8 +28,8 @@ public class Register extends HttpServlet {
         String address = request.getParameter("address");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        ArrayList<User> userArrayList = UserBO.getInstance().getUserByUsername(username);
-        if (userArrayList != null){
+        User user = UserBO.getInstance().getUserByUsername(username);
+        if (user != null){
             request.setAttribute("error", "Tên đăng nhập đã tồn tại!");
             request.getRequestDispatcher("WEB-INF/register.jsp").forward(request, response);
         } else {
