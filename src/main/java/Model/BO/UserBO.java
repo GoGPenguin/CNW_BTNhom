@@ -23,6 +23,9 @@ public class UserBO {
     public ArrayList<User> getFilterListUser(String filterInput) {
         return userDAO.getFilterListUser(filterInput);
     }
+    public ArrayList<User> getUserByUsername(String username) {
+        return userDAO.getUserByUsername(username);
+    }
     public User getUserById(String id) {
         return userDAO.getUserById(id);
     }

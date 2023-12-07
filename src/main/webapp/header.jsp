@@ -42,9 +42,7 @@
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="/user?id=<%=user.getIdUser()%>"
                        data-bs-toggle="modal" data-bs-target="#modalDetail"
-                       onclick="showDetailForm('<%=user.getIdUser()%>', '<%=user.getUsername()%>',
-                               '<%=user.getPassword()%>', '<%=user.getNameUser()%>',
-                               '<%=user.getPhoneUser()%>', '<%=user.getAddressUser()%>')">Thông tin cá nhân</a>
+                       onclick="showDetailForm('<%=user.getIdUser()%>')">Thông tin cá nhân</a>
                 </li>
                 <li><a class="dropdown-item" href="/logout">Đăng xuất</a></li>
             </ul>
@@ -95,24 +93,24 @@
             <form action="/user?action=handleUpdateUser" method="post">
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="InputEmailUpdate" class="form-label">Email address</label>
+                        <label for="InputEmailUpdate" class="form-label">Username</label>
                         <input type="text" class="form-control" id="InputEmailUpdate" name="InputEmailUpdate"
                                aria-describedby="emailHelp" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="InputPasswordUpdate" class="form-label">Password</label>
-                        <input type="text" class="form-control" id="InputPasswordUpdate" name="InputPasswordUpdate">
+                        <label for="InputPasswordUpdate" class="form-label">Mật khẩu</label>
+                        <input type="password" class="form-control" id="InputPasswordUpdate" name="InputPasswordUpdate">
                     </div>
                     <div class="mb-3">
-                        <label for="InputFullNameUpdate" class="form-label">FullName</label>
+                        <label for="InputFullNameUpdate" class="form-label">Họ tên</label>
                         <input type="text" class="form-control" id="InputFullNameUpdate" name="InputFullNameUpdate">
                     </div>
                     <div class="mb-3">
-                        <label for="InputPhoneNumberUpdate" class="form-label">Phone Number</label>
+                        <label for="InputPhoneNumberUpdate" class="form-label">Số điện thoại</label>
                         <input type="text" class="form-control" id="InputPhoneNumberUpdate" name="InputPhoneNumberUpdate">
                     </div>
                     <div class="mb-3">
-                        <label for="InputAddressUpdate" class="form-label">Address</label>
+                        <label for="InputAddressUpdate" class="form-label">Địa chỉ</label>
                         <input type="text" class="form-control" id="InputAddressUpdate" name="InputAddressUpdate">
                     </div>
                 </div>
@@ -128,14 +126,5 @@
 </div>
 
 </body>
-<script>
-    function showDetailForm(id, username, password, nameUser, phoneNum, address) {
-        document.getElementById('InputUpdateId').value = id;
-        document.getElementById('InputEmailUpdate').value = username;
-        document.getElementById('InputFullNameUpdate').value = nameUser;
-        document.getElementById('InputPasswordUpdate').value = password;
-        document.getElementById('InputPhoneNumberUpdate').value = phoneNum;
-        document.getElementById('InputAddressUpdate').value = address;
-    }
-</script>
+<script src="js/userDetail.js"></script>
 </html>

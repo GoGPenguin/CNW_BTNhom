@@ -27,8 +27,6 @@ W
 'src/main/java/Model/DAO/ProductDAO.java,7\8\780fa0ae317701a3101c3234a70dc86b05b7a42a
 U
 %src/main/java/Database/ConnectDB.java,f\7\f7177017961c5fe07b248fb62405dadc6367ab56
-X
-(src/main/java/Ultilities/GenerateID.java,7\2\72aa8777d0ba7cf48fc73455d033375ea1771d7a
 U
 %src/main/java/Model/BEAN/Product.java,f\1\f1dd6424ed7b90e271649734fe6ae5a94f75526c
 \
@@ -39,7 +37,3 @@ K
 .src/main/webapp/bootstrap520/css/bootstrap.css,1\0\1038622b9c19b90853c6f6981b198e846aed9734
 h
 8src/main/webapp/bootstrap520/css/bootstrap-utilities.css,6\8\681cea79053387f4da10e2df3617b5078cfb25f2
-S
-#src/main/webapp/js/filterProduct.js,b\d\bd763484cb06e49ba9e536ef069359d6f86d9ca0
-T
-$src/main/java/Model/DAO/UserDAO.java,f\0\f031fca8a56f0e295ff496e1d13822bd1fc66825

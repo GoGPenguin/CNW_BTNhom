@@ -4,7 +4,8 @@ import Model.BEAN.User;
 import Model.BO.CategoryBO;
 import Model.BO.ProductBO;
 import Model.BO.UserBO;
-import jakarta.servlet.RequestDispatcher;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,8 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
+import java.io.PrintWriter;
 
 @WebServlet("/user")
 public class DetailUser extends HttpServlet {
@@ -30,7 +30,34 @@ public class DetailUser extends HttpServlet {
             case "handleUpdateUser":
                 handleUpdateUser(request, response);
                 break;
+            case "getUser":
+                getUserById(request, response);
+                break;
+        }
+    }
 
+    private void getUserById(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String id = request.getParameter("userId");
+        User user = UserBO.getInstance().getUserById(id);
+        if (user == null) {
+            // Trả về lỗi hoặc thông báo nếu không tìm thấy user
+            response.setContentType("text/plain");
+            response.getWriter().write("User not found");
+            return;
+        } else {
+            // Convert User thành đối tượng JSON bằng Gson
+            Gson gson = new GsonBuilder().create();
+            String productListJson = gson.toJson(user);
+
+            response.setContentType("application/json");
+            PrintWriter out = null;
+            try {
+                out = response.getWriter();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            out.print(productListJson);
+            out.flush();
         }
     }
 

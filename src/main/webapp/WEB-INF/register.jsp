@@ -36,31 +36,31 @@
                 <span id="errorUsername" class="text-danger"></span>
                 <p>
                     <label for="password">Tên người dùng <span class="text-danger">(*)</span></label>
-                    <input type="text" class="form-control" name="email" id="nameUser" style="width: 100%; height: 30px"
+                    <input type="text" class="form-control" name="nameUser" id="nameUser" style="width: 100%; height: 30px"
                            oninput="emptyRegisterNameUser()">
                 </p>
                 <span id="errorNameUser" class="text-danger"></span>
                 <p>
                     <label for="phoneNum">Số điện thoại <span class="text-danger">(*)</span></label>
-                    <input type="text" class="form-control" name="email" id="phoneNum" style="width: 100%; height: 30px"
+                    <input type="text" class="form-control" name="phoneNum" id="phoneNum" style="width: 100%; height: 30px"
                            oninput="emptyRegisterPhoneNum()">
                 </p>
                 <span id="errorPhoneNum" class="text-danger"></span>
                 <p>
                     <label for="address">Địa chỉ <span class="text-danger">(*)</span></label>
-                    <input type="text" class="form-control" name="email" id="address" style="width: 100%; height: 30px"
+                    <input type="text" class="form-control" name="address" id="address" style="width: 100%; height: 30px"
                            oninput="emptyRegisterAddress()">
                 </p>
                 <span id="errorAddress" class="text-danger"></span>
                 <p>
                     <label for="password">Password <span class="text-danger">(*)</span></label>
-                    <input type="text" class="form-control" name="email" id="password" style="width: 100%; height: 30px"
+                    <input type="text" class="form-control" name="password" id="password" style="width: 100%; height: 30px"
                            oninput="emptyRegisterPassword(); checkPassword()">
                 </p>
                 <span id="errorPassword" class="text-danger"></span>
                 <p>
                     <label for="confirmPassword">Xác nhận mật khẩu <span class="text-danger">(*)</span></label>
-                    <input type="text" class="form-control" name="email" id="confirmPassword"
+                    <input type="text" class="form-control" name="confirmPassword" id="confirmPassword"
                            style="width: 100%; height: 30px"
                            oninput="emptyRegisterConfirmPassword(); checkPassword()">
                 </p>
