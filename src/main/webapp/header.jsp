@@ -58,9 +58,9 @@
                 <%=admin.getNameAdmin()%>
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item"
-                       data-bs-toggle="modal" data-bs-target="#modalDetail">Thông tin cá nhân</a>
-                </li>
+<%--                <li><a class="dropdown-item"--%>
+<%--                       data-bs-toggle="modal" data-bs-target="#modalDetail">Thông tin cá nhân</a>--%>
+<%--                </li>--%>
                 <li><a class="dropdown-item" href="/logout">Đăng xuất</a></li>
             </ul>
         </div>
