@@ -50,16 +50,16 @@
 
 </head>
 <body>
-<div style="display: flex;align-items: center;justify-content: flex-end; padding: 5px 10px;">
-    <div class="btn-group">
-        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            Welcome, I'm Admin
-        </button>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/logout">Đăng xuất</a></li>
-        </ul>
-    </div>
-</div>
+<%--<div style="display: flex;align-items: center;justify-content: flex-end; padding: 5px 10px;">--%>
+<%--    <div class="btn-group">--%>
+<%--        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">--%>
+<%--            Welcome, I'm Admin--%>
+<%--        </button>--%>
+<%--        <ul class="dropdown-menu">--%>
+<%--            <li><a class="dropdown-item" href="#">Đăng xuất</a></li>--%>
+<%--        </ul>--%>
+<%--    </div>--%>
+<%--</div>--%>
 <div class="div-Search">
     <form method="post" action = "/ManageOrder?action=filterOrder">
         <div class="row">

@@ -89,8 +89,6 @@
     <div class="div-left">
         <h2>Admin</h2>
         <div class="div-left--item">
-<%--            <button type="button" class="btn btn-primary" style="width:80%;" onclick="loadManagerUserPage()">Manage User</button>--%>
-<%--            <button type="button" class="btn btn-primary" style="width:80%;" onclick="loadManagerOrderPage()">Manage Order</button>--%>
     <div class="d-flex align-items-start">
         <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical"  >
             <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true" onclick="loadManagerUserPage()"><i class="fa-solid fa-user"></i>Manage User</button>
@@ -99,12 +97,22 @@
             <button class="nav-link"  data-bs-toggle="pill"  type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false" onclick="loadManagerOrderPage()"><i class="fa-solid fa-cart-shopping"></i>Manage Order</button>
 
         </div>
-
     </div>
         </div>
     </div>
     <div class="div-right">
-        <iframe id="myIframe" src="" frameborder="0" style="width:100%;height:100%;"></iframe>
+        <div style="display: flex;align-items: center;justify-content: flex-end; padding: 5px 10px;">
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Welcome, I'm Admin
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Đăng xuất</a></li>
+<%--                    goi controller roi redirect login--%>
+                </ul>
+            </div>
+        </div>
+        <iframe id="myIframe" src="ManageUserPage.jsp" frameborder="0" style="width:100%;height:100%;"></iframe>
     </div>
 </div>
 
