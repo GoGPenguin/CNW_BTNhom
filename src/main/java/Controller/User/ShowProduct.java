@@ -1,6 +1,7 @@
 package Controller.User;
 
 import Model.BEAN.Product;
+import Model.BO.CategoryBO;
 import Model.BO.ProductBO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -14,6 +15,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Objects;
 
 @WebServlet("")
 public class ShowProduct extends HttpServlet {
@@ -22,8 +24,8 @@ public class ShowProduct extends HttpServlet {
         doPost(request, response);
         if (request.getParameter("categoryId") != null){
             filterCategory(request, response);
-
         } else {
+            request.setAttribute("categoryList", CategoryBO.getInstance().getAllCategory());
             request.setAttribute("productList", ProductBO.getInstance().getAllProduct());
             try {
                 request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -35,7 +37,12 @@ public class ShowProduct extends HttpServlet {
 
     private void filterCategory(HttpServletRequest request, HttpServletResponse response) {
         String categoryId = request.getParameter("categoryId");
-        ArrayList<Product> productList = ProductBO.getInstance().getProductByCategoryId(categoryId);
+        ArrayList<Product> productList;
+        if (Objects.equals(categoryId, "All")){
+            productList = ProductBO.getInstance().getAllProduct();
+        } else {
+            productList = ProductBO.getInstance().getProductByCategoryId(categoryId);
+        }
         Gson gson = new GsonBuilder().create();
         String productListJson = gson.toJson(productList);
 

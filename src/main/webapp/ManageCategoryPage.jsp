@@ -42,7 +42,7 @@
             Welcome, I'm Admin
         </button>
         <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Đăng xuất</a></li>
+            <li><a class="dropdown-item" href="/register">Đăng xuất</a></li>
         </ul>
     </div>
 </div>

@@ -1,6 +1,9 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="Model.BEAN.Product" %>
-<%@ page import="Model.BEAN.User" %><%--
+<%@ page import="Model.BEAN.User" %>
+<%@ page import="Model.BEAN.Category" %>
+<%@ page import="Model.BO.ProductBO" %>
+<%@ page import="Model.BO.CategoryBO" %><%--
   Created by IntelliJ IDEA.
   User: ACER
   Date: 04/12/2023
@@ -24,90 +27,39 @@
     <link rel="stylesheet" href="css/css.css">
 </head>
 <body>
-<%
-    ArrayList<Product> productList1 = (ArrayList<Product>) request.getAttribute("productList");
-
-
-%>
-<div class="navbar header-container container row">
-    <div style="width: 100%">
-        <ul class="list-group list-group-horizontal" style="width: 100%; justify-content: space-between">
-            <li class="list-group-item" style="border: none">
-                <div>
-                    <a href="index.jsp"><img src="image/logo.png" alt="Logo" width="50" height="50"></a>
-                </div>
-            </li>
-            <li class="list-group-item" style="border: none">
-                <form>
-                    <input type="text" placeholder="Tìm kiếm">
-                    <button type="submit" class="btn btn-primary" style="height: 30px">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </form>
-            </li>
-            <%User user = (User) request.getAttribute("user");
-                if (user != null){
-            %>
-            <li class="list-group-item" style="border: none">
-                <span style="">
-                    <a href="/idUser">
-                        <button style="padding: 0; border: none; background: none; color: blue"><%=user.getNameUser()%></button>
-                    </a>
-                </span>
-                <span style="">
-                    <a href="/logout">
-                        <button style="padding: 0; border: none; background: none; color: blue">Đăng xuất</button>
-                    </a>
-                </span>
-            </li>
-            <%} else {%>
-            <li class="list-group-item" style="border: none">
-                <span style="">
-                    <a href="/login">
-                        <button style="padding: 0; border: none; background: none; color: blue">Đăng nhập</button>
-                    </a>
-                </span>
-                <span style="">
-                    <a href="/register">
-                        <button style="padding: 0; border: none; background: none; color: blue">Đăng kí</button>
-                    </a>
-                </span>
-            </li>
-            <%}%>
-        </ul>
-    </div>
-</div>
+<jsp:include page="header.jsp"></jsp:include>
 <div class="row">
-    <div class="col-2">
+    <div class="col-2" style="margin-top: 10px">
         <ul class="list-group">
-            <li class="list-group-item"><b>Danh mục</b></li>
+            <li class="list-group-item" style="text-align: center"><b>Danh mục</b></li>
             <li class="list-group-item">
                 <span style="color: blue">
-                    <a href="">
-                        <button style="padding: 0; border: none; background: none" onclick="filterProduct('')"> Tất cả</button>
-                    </a>
+                    <button style="padding: 0; border: none; background: none; width: 100%; height: 100%"
+                            onclick="filterProduct('All')">Tất cả
+                    </button>
                 </span>
             </li>
+            <%
+                ArrayList<Category> categoryList = (ArrayList<Category>) request.getAttribute("categoryList");
+                if (categoryList == null) {
+            %>
+            <p>Không có dữ liệu</p>
+            <%
+            } else {
+                for (int i = 0; i < categoryList.size(); i++) {
+            %>
             <li class="list-group-item">
                 <span style="color: blue">
-                    <button style="padding: 0; border: none; background: none" onclick="filterProduct(1)">Bánh ngọt</button>
+                    <button style="padding: 0; border: none; background: none; width: 100%; height: 100%"
+                            onclick="filterProduct('<%=categoryList.get(i).getIdCategory()%>')">
+                        <%=categoryList.get(i).getNameCategory()%>
+                    </button>
                 </span>
             </li>
-            <li class="list-group-item">
-                <span style="color: blue">
-                    <button style="padding: 0; border: none; background: none" onclick="filterProduct(2)">Bánh bông lan</button>
-                </span>
-            </li>
-            <li class="list-group-item">
-                <span style="color: blue">
-                    <button style="padding: 0; border: none; background: none" onclick="filterProduct(3)">Bánh mì</button>
-                </span>
-            </li>
-            <li class="list-group-item">
-                <span style="color: blue">
-                    <button style="padding: 0; border: none; background: none" onclick="filterProduct(4)">Bánh mặn</button>
-                </span>
-            </li>
+            <%
+                    }
+                }
+            %>
         </ul>
     </div>
     <div class="col-10">
@@ -120,19 +72,21 @@
                 %>
                 <p>Không có dữ liệu</p>
                 <%
-                    }
+                } else {
                     for (int i = 0; i < productList.size(); i++) {
-
                 %>
                 <div class="wrapper">
                     <div class="thumbnail">
-                        <img src="<%=productList.get(i).getUrlImage()%>" alt="cover">
+                        <img src="/uploads/<%=productList.get(i).getUrlImage()%>" alt="cover">
                     </div>
-                    <div class="text"><%=productList.get(i).getNameProduct()%>
+                    <div class="text fw-bold"><%=productList.get(i).getNameProduct()%>
                     </div>
                     <div class="price"><%=productList.get(i).getPrice()%>&nbsp;₫</div>
                 </div>
-                <%}%>
+                <%
+                        }
+                    }
+                %>
             </div>
         </div>
     </div>

@@ -29,21 +29,131 @@
             <form method="post" action="/register" autocomplete="off">
                 <p>
                     <label for="username">Username <span class="text-danger">(*)</span></label>
-                    <input type="text" name="email" id="username" style="width: 100%;">
+                    <input type="text" class="form-control" name="username" id="username"
+                           style="width: 100%; height: 30px"
+                           oninput="emptyRegisterUsername()">
                 </p>
-
+                <span id="errorUsername" class="text-danger"></span>
+                <p>
+                    <label for="password">Tên người dùng <span class="text-danger">(*)</span></label>
+                    <input type="text" class="form-control" name="email" id="nameUser" style="width: 100%; height: 30px"
+                           oninput="emptyRegisterNameUser()">
+                </p>
+                <span id="errorNameUser" class="text-danger"></span>
+                <p>
+                    <label for="phoneNum">Số điện thoại <span class="text-danger">(*)</span></label>
+                    <input type="text" class="form-control" name="email" id="phoneNum" style="width: 100%; height: 30px"
+                           oninput="emptyRegisterPhoneNum()">
+                </p>
+                <span id="errorPhoneNum" class="text-danger"></span>
+                <p>
+                    <label for="address">Địa chỉ <span class="text-danger">(*)</span></label>
+                    <input type="text" class="form-control" name="email" id="address" style="width: 100%; height: 30px"
+                           oninput="emptyRegisterAddress()">
+                </p>
+                <span id="errorAddress" class="text-danger"></span>
                 <p>
                     <label for="password">Password <span class="text-danger">(*)</span></label>
-                    <input type="text" name="email" id="password" >
+                    <input type="text" class="form-control" name="email" id="password" style="width: 100%; height: 30px"
+                           oninput="emptyRegisterPassword(); checkPassword()">
                 </p>
-                <button type="submit" class="btn btn-primary" style="width: 100%">Đăng ký</button>
+                <span id="errorPassword" class="text-danger"></span>
+                <p>
+                    <label for="confirmPassword">Xác nhận mật khẩu <span class="text-danger">(*)</span></label>
+                    <input type="text" class="form-control" name="email" id="confirmPassword"
+                           style="width: 100%; height: 30px"
+                           oninput="emptyRegisterConfirmPassword(); checkPassword()">
+                </p>
+                <span id="errorConfirmPassword" class="text-danger"></span>
+                <% String error = (String) request.getAttribute("error");
+                    if (error != null) {%>
+                <span id="error" class="text-danger"><%=error%></span>
+                <%}%>
+                <button type="submit" class="btn btn-primary" style="width: 100%" id="registerBtn">Đăng ký</button>
             </form>
             <div class="div-Or"><span>OR</span></div>
             <div class="register-footer">Bạn đã có tài khoản?
                 <span><a href="/login">Đăng nhập ngay</a></span>
+                <a href="/">
+                    <button class="btn btn-primary">Quay lại trang chủ</button>
+                </a>
             </div>
         </div>
     </div>
 </div>
 </body>
+<script>
+    function checkPassword() {
+        let password = document.getElementById("password").value;
+        let confirmPassword = document.getElementById("confirmPassword").value;
+        if (password !== confirmPassword && confirmPassword !== "") {
+            document.getElementById("errorConfirmPassword").innerHTML = "Mật khẩu phải trùng với xác nhận mật khẩu!";
+            document.getElementById("registerBtn").disabled = true;
+        } else if (password === confirmPassword  && confirmPassword !== ""){
+            document.getElementById("errorConfirmPassword").innerHTML = "";
+            document.getElementById("registerBtn").disabled = false;
+        }
+    }
+    function emptyRegisterUsername() {
+        let username = document.getElementById("username").value;
+        if (username === "") {
+            document.getElementById("errorUsername").innerHTML = "Chưa nhập username!";
+            document.getElementById("registerBtn").disabled = true;
+        }
+        else {
+            document.getElementById("errorUsername").innerHTML = "";
+            document.getElementById("registerBtn").disabled = false;
+        }
+    }
+    function emptyRegisterNameUser(){
+        let nameUser = document.getElementById("nameUser").value;
+        if (nameUser === "") {
+            document.getElementById("errorNameUser").innerHTML = "Chưa nhập tên người dùng!";
+            document.getElementById("registerBtn").disabled = true;
+        } else {
+            document.getElementById("errorNameUser").innerHTML = "";
+            document.getElementById("registerBtn").disabled = false;
+        }
+    }
+    function emptyRegisterPhoneNum(){
+        let phoneNum = document.getElementById("phoneNum").value;
+        if (phoneNum === "") {
+            document.getElementById("errorPhoneNum").innerHTML = "Chưa nhập số điện thoại!";
+            document.getElementById("registerBtn").disabled = true;
+        } else {
+            document.getElementById("errorPhoneNum").innerHTML = "";
+            document.getElementById("registerBtn").disabled = false;
+        }
+    }
+    function emptyRegisterAddress(){
+        let address = document.getElementById("address").value;
+        if (address === "") {
+            document.getElementById("errorAddress").innerHTML = "Chưa nhập địa chỉ!";
+            document.getElementById("registerBtn").disabled = true;
+        } else {
+            document.getElementById("errorAddress").innerHTML = "";
+            document.getElementById("registerBtn").disabled = false;
+        }
+    }
+    function emptyRegisterPassword(){
+        let password = document.getElementById("password").value;
+        if (password === "") {
+            document.getElementById("errorPassword").innerHTML = "Chưa nhập mật khẩu!";
+            document.getElementById("registerBtn").disabled = true;
+        } else {
+            document.getElementById("errorPassword").innerHTML = "";
+            document.getElementById("registerBtn").disabled = false;
+        }
+    }
+    function emptyRegisterConfirmPassword(){
+        let confirmPassword = document.getElementById("confirmPassword").value;
+        if (confirmPassword === "") {
+            document.getElementById("errorConfirmPassword").innerHTML = "Chưa nhập xác nhận mật khẩu!";
+            document.getElementById("registerBtn").disabled = true;
+        } else {
+            document.getElementById("errorConfirmPassword").innerHTML = "";
+            document.getElementById("registerBtn").disabled = false;
+        }
+    }
+</script>
 </html>

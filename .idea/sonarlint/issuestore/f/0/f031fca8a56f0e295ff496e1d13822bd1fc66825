@@ -1,0 +1,24 @@
+
+d
+java:S1192%"IDefine a constant instead of duplicating this literal "nameUser" 4 times.(ÎÙ“óùÿÿÿÿ
+d
+java:S1192$"GDefine a constant instead of duplicating this literal "idUser" 3 times.(«ÒîÁ8ÆÜ®éÃ1
+d
+java:S1192)"IDefine a constant instead of duplicating this literal "password" 4 times.(Ú½€öüÿÿÿÿ
+_
+java:S1192&"JDefine a constant instead of duplicating this literal "phoneUser" 4 times.(øÛÏ[
+b
+java:S1192'"LDefine a constant instead of duplicating this literal "addressUser" 4 times.(Áä©“
+d
+java:S1192("IDefine a constant instead of duplicating this literal "username" 4 times.(øè·´ûÿÿÿÿ
+‹
+java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(‚ãúÿÿÿÿ
+…
+java:S13193"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(í“ĞL
+
+java:S1319Œ"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(õñåì8ÈÜ®éÃ1
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ƒôĞ¡üÿÿÿÿ
+¯
+java:S6548"˜A Singleton implementation was detected. Make sure the use of the Singleton pattern is required and the implementation is the right one for the context.(ÁÇæÅ
+J
+java:S1172r"/Remove this unused method parameter "username".(ÿ˜‹æúÿÿÿÿ

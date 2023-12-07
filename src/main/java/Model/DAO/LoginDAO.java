@@ -72,7 +72,7 @@ public class LoginDAO {
                 try (ResultSet adminRs = adminPre.executeQuery()) {
                     if (adminRs.next()) {
                         String idAdmin = adminRs.getString("idAdmin");
-                        String nameAdmin = adminRs.getString("nameAdmin");
+                        String nameAdmin = adminRs.getString("username");
                         Admin admin = new Admin(idAdmin, nameAdmin);
                         return admin;
                     }
@@ -92,8 +92,8 @@ public class LoginDAO {
                     }
                 }
             }
-            // If no match found, return Role.WRONG
-            return Role.WRONG;
+            // If no match found, return null
+            return null;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

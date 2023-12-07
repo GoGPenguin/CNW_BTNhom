@@ -32,56 +32,70 @@
             <form method="post" action="/login" autocomplete="off">
                 <p>
                     <label for="username">Username <span class="text-danger">(*)</span></label>
-                    <input type="text" name="email" class="form-control" id="username" style="width: 93%; height: 30px" onblur="empty()">
+                    <input type="text" name="username" class="form-control" id="username"
+                           style="width: 100%; height: 30px"
+                           oninput="emptyName()">
                 </p>
                 <span id="error1" class="text-danger"></span>
                 <p>
                     <label for="password">Password <span class="text-danger">(*)</span></label>
-                    <input type="password" class="form-control" name="password" id="password" style="width: 93%; height: 30px" onblur="empty()">
-                    <i class="bi bi-eye-slash" id="togglePassword"></i>
+                    <input type="password" class="form-control" name="password" id="password"
+                           style="width: 100%; height: 30px"
+                           oninput="emptyPassword()">
                 </p>
                 <span id="error2" class="text-danger"></span>
-                <%if ((String) request.getParameter("error") != null) {%>
-                <span id="error" class="text-danger"><%=(String) request.getParameter("error")%></span>
+                <% String error = (String) request.getAttribute("error");
+                    if (error != null) {%>
+                <span id="error" class="text-danger"><%=error%></span>
                 <%}%>
-                <br>
-                <button type="submit" class="btn btn-primary" style="width: 100%">Đăng nhập</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%" id="loginBtn">Đăng nhập</button>
             </form>
             <div class="div-Or"><span>OR</span></div>
             <div class="login-footer">Bạn chưa có tài khoản?
-                <span><a href="/register">Đăng ký ngay</a></span>
+                <span><a href="/register">Đăng ký ngay</a></span><br>
+                <a href="/">
+                    <button class="btn btn-primary">Quay lại trang chủ</button>
+                </a>
             </div>
         </div>
     </div>
 </div>
 </body>
 <script>
-    function empty() {
+    function emptyName() {
         let username = document.getElementById('username').value;
-        let password = document.getElementById('password').value;
         if (username === "") {
             document.getElementById('error1').innerText = "Phải điền tên người dùng!";
-        } else if (password === "") {
-            document.getElementById('error2').innerText = "Phải điền mật khẩu!";
+            document.getElementById('loginBtn').disabled = true;
         } else {
             document.getElementById('error1').innerText = "";
+            document.getElementById('loginBtn').disabled = false;
+        }
+    }
+
+    function emptyPassword() {
+        let password = document.getElementById('password').value;
+        if (password === "") {
+            document.getElementById('error2').innerText = "Phải điền mật khẩu!";
+            document.getElementById('loginBtn').disabled = true;
+        } else {
             document.getElementById('error2').innerText = "";
+            document.getElementById('loginBtn').disabled = false;
         }
     }
 </script>
-<script>
-    const togglePassword = document
-        .querySelector('#togglePassword');
-    const password = document.querySelector('#password');
-    togglePassword.addEventListener('click', () => {
-        // Toggle the type attribute using
-        // getAttribure() method
-        const type = password
-            .getAttribute('type') === 'password' ?
-            'text' : 'password';
-        password.setAttribute('type', type);
-        // Toggle the eye and bi-eye icon
-        this.classList.toggle('bi-eye');
-    });
-</script>
+<%--<script>--%>
+<%--    const togglePassword = document--%>
+<%--        .querySelector('#togglePassword');--%>
+<%--    const password = document.querySelector('#password');--%>
+<%--    togglePassword.addEventListener('click', () => {--%>
+
+<%--        const type = password--%>
+<%--            .getAttribute('type') === 'password' ?--%>
+<%--            'text' : 'password';--%>
+<%--        password.setAttribute('type', type);--%>
+
+<%--        this.classList.toggle('bi-eye');--%>
+<%--    });--%>
+<%--</script>--%>
 </html>

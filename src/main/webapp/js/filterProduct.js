@@ -30,12 +30,12 @@ function createProductElement(product) {
     const thumbnail = document.createElement('div');
     thumbnail.className = 'thumbnail';
     const thumbnailImage = document.createElement('img');
-    thumbnailImage.src = product.urlImage;
+    thumbnailImage.src = '/uploads/' + product.urlImage;
     thumbnailImage.alt = 'cover';
     thumbnail.appendChild(thumbnailImage);
 
     const text = document.createElement('div');
-    text.className = 'text';
+    text.className = 'text fw-bold';
     text.textContent = product.nameProduct;
 
     const price = document.createElement('div');
