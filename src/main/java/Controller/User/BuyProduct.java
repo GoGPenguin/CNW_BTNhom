@@ -5,9 +5,7 @@ import Model.BEAN.Product;
 import Model.BEAN.User;
 import Model.BO.OrderBO;
 import Model.BO.ProductBO;
-import Model.DAO.OrderDAO;
 import Ultilities.GenerateID;
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -17,10 +15,8 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Objects;
 
 @WebServlet(urlPatterns = "/buy")
@@ -33,14 +29,13 @@ public class BuyProduct extends HttpServlet {
             User user = (User) session.getAttribute("user");
             if (user != null) {
                 session.setAttribute("user", user);
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("order.jsp");
-                requestDispatcher.forward(request, response);
+
+                request.getRequestDispatcher("cart.jsp").forward(request, response);
             } else {
                 response.sendRedirect("/login");
             }
         } else {
             // Session không tồn tại, có thể yêu cầu đăng nhập
-//            request.getRequestDispatcher("WEB-INF/login.jsp").forward(request, response);
             response.sendRedirect("/login");
 
         }
@@ -121,14 +116,27 @@ public class BuyProduct extends HttpServlet {
 
                     case "buy":
                         session.setAttribute("user", user);
-                        request.getRequestDispatcher("order.jsp").forward(request, response);
+                        amount = Integer.parseInt(request.getParameter("amount"));
+                        idProduct = request.getParameter("idProduct");
+                        product = ProductBO.getInstance().getProductById(idProduct);
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
+                        LocalDateTime currentDateTime = LocalDateTime.now();
+                        String formattedDate = currentDateTime.format(formatter);
+                        order = new Order();
+                        order.setIdUser(user.getIdUser());
+                        order.setProduct(product);
+                        order.setAmount(amount);
+                        order.setTotalCost(product.getPrice() * amount);
+                        OrderBO.getInstance().addOrder(order.getProduct().getIdProduct(), user.getIdUser(), order.getAmount(),
+                                formattedDate);
+                        response.sendRedirect("/");
                         break;
 
                     case "pay":
                         orderList = (ArrayList<Order>) session.getAttribute("orderList");
-                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
-                        LocalDateTime currentDateTime = LocalDateTime.now();
-                        String formattedDate = currentDateTime.format(formatter);
+                        formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
+                        currentDateTime = LocalDateTime.now();
+                        formattedDate = currentDateTime.format(formatter);
                         String idOrder = new GenerateID("`order`").generateID();
                         for (int i = 0; i < orderList.size(); i++) {
                             orderList.get(i).setIdOrder(idOrder);

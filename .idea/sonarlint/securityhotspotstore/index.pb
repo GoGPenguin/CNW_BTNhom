@@ -67,14 +67,10 @@ I
 src/main/webapp/index.jsp,8\e\8e6d3b70c9f5b02570779b0441540d45eceb0ded
 U
 %src/main/java/Model/BO/ProductBO.java,c\9\c90138b526ac32660424eae45c2b689bfdb709d1
-J
-src/main/webapp/header.jsp,0\5\051b0ac501a865704d2b6b36f8cfabfa311becc2
 K
 src/main/webapp/css/css.css,d\7\d7ffe9e7c01da697d140f373a478acae8eb2717e
 I
 src/main/webapp/order.jsp,b\7\b7f56e5a7a2091b5211a9a6f94b7ac2cad3f1fa2
-_
-/src/main/java/Controller/Admin/ManageOrder.java,0\1\01540053fac5a2a443c051f2ca815a1a2e52195e
 S
 #src/main/webapp/ManageOrderPage.jsp,a\1\a1b2c31469c5b4d671f85a0d1b91babe34df78c9
 S

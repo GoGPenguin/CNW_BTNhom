@@ -41,7 +41,10 @@
                 </tr>
                 <%
                     ArrayList<Order> orderList = (ArrayList<Order>) session.getAttribute("orderList");
-                    int payment = (int) session.getAttribute("payment");
+                    int payment = 0;
+                    if (session.getAttribute("payment") != null) {
+                        payment = (int) session.getAttribute("payment");
+                    }
                     if (orderList == null) {
                 %>
                 <tr>
@@ -55,11 +58,14 @@
                     <td><%=i + 1%>
                     </td>
                     <td>
-                        <img src="/uploads/<%=orderList.get(i).getProduct().getUrlImage()%>" alt="cover" height="50" width="50">
+                        <img src="/uploads/<%=orderList.get(i).getProduct().getUrlImage()%>" alt="cover" height="50"
+                             width="50">
                     </td>
-                    <td><%=orderList.get(i).getProduct().getNameProduct()%></td>
+                    <td><%=orderList.get(i).getProduct().getNameProduct()%>
+                    </td>
                     <td><%=orderList.get(i).getProduct().getPrice()%>&nbsp;₫</td>
-                    <td><%=orderList.get(i).getAmount()%></td>
+                    <td><%=orderList.get(i).getAmount()%>
+                    </td>
                     <td><%=orderList.get(i).getTotalCost()%>&nbsp;₫</td>
                     <td>
                         <form action="/buy" method="post">
@@ -79,11 +85,15 @@
                 <form action="/buy" method="post" style="width: 100%; margin-left: 10px">
                     <div style="display: flex; justify-content: space-around; align-items: center;">
                         <span style="font-size: 15px; text-align: left">Thành tiền: </span>
-                        <span style="font-size: 20px; font-weight: 500; color: blue; text-align: right" id="totalPayment"><%=payment%>&nbsp;₫</span>
+                        <span style="font-size: 20px; font-weight: 500; color: blue; text-align: right"
+                              id="totalPayment"><%=payment%>&nbsp;₫</span>
                     </div>
-                    <br><hr>
+                    <br>
+                    <hr>
                     <div>
-                        <button id="paymentBtn" type="submit" class="btn btn-primary w-100" name="action" value="pay">Thanh toán</button>
+                        <button id="paymentBtn" type="submit" class="btn btn-primary w-100" name="action" value="pay">
+                            Thanh toán
+                        </button>
                     </div>
                 </form>
             </div>

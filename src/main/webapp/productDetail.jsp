@@ -36,7 +36,7 @@
             <img src="uploads/<%=product.getUrlImage()%>" height="400" width="275" alt="Cover" border="2px">
         </div>
         <div class="col-7">
-            <form action="" method="post">
+            <form action="" method="post" id="form">
                 <div id="nameProduct" style="font-size: 30px; font-weight: 200; padding: 10px 0;">
                     <%=product.getNameProduct()%>
                 </div>
@@ -64,8 +64,8 @@
                             id="cartBtn">
                         Thêm vào giỏ hàng
                     </button>
-                    <button type="submit" formaction="/buy" name="action" value="buy" class="btn btn-outline-primary"
-                            id="buyBtn">
+                    <button type="button" formaction="/buy" name="action" value="buy" class="btn btn-outline-primary"
+                            id="buyBtn" onclick="confirmPurchase()">
                         Mua ngay
                     </button>
                 </div>
@@ -127,6 +127,14 @@
         } else {
             document.getElementById("cartBtn").disabled = false;
             document.getElementById("buyBtn").disabled = false;
+        }
+    }
+
+    function confirmPurchase() {
+        let isConfirmed = confirm("Bạn có chắc chắn muốn mua ngay không?");
+        if (isConfirmed) {
+            document.getElementById("form").action = "/buy?action=buy";
+            document.getElementById("form").submit();
         }
     }
 </script>

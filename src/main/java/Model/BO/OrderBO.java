@@ -36,7 +36,7 @@ public class OrderBO {
     public int getIncomeById(String idOrder) {
         return orderDAO.getIncomeById(idOrder);
     }
-    public void addOrder(String idProduct, String idUser, int amount, Date date) {
+    public void addOrder(String idProduct, String idUser, int amount, String date) {
         orderDAO.addOrder(idProduct, idUser, amount, date);
     }
 
