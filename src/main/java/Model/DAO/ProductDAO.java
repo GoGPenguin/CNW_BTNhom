@@ -111,7 +111,7 @@ public class ProductDAO {
             pre.setString(1, id);
             ResultSet rs = pre.executeQuery();
             while (rs.next()) {
-                product.setIdCategory(id);
+                product.setIdProduct(id);
                 product.setNameProduct(rs.getString("nameProduct"));
                 product.setPrice(rs.getInt("price"));
                 product.setIdCategory(rs.getString("idCategory"));

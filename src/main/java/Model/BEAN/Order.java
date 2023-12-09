@@ -14,6 +14,8 @@ public class Order {
     private String phoneUser;
     private String addressUser;
 
+    private Product product;
+
     public Order() {
         super();
     }
@@ -106,5 +108,13 @@ public class Order {
 
     public void setAddressUser(String addressUser) {
         this.addressUser = addressUser;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }

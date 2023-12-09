@@ -1,4 +1,4 @@
-<%--
+<%@ page import="Model.BEAN.Product" %><%--
   Created by IntelliJ IDEA.
   User: ACER
   Date: 07/12/2023
@@ -22,17 +22,112 @@
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
-<div class="row" style="max-width: 100%">
+<%
+    Product product = (Product) request.getAttribute("product");
+    if (product == null) {
+%>
+<h1>Không tìm thấy sản phẩm!</h1>
+<%} else {%>
+<div class="row" style="max-width: 100%;">
     <div class="col-2"></div>
-    <div class="col-8 d-flex">
-        <div class="col-5">
-            <img src="uploads/banhmi.jpg" height="400" width="275" alt="Cover" border="3px">
+    <div class="col-8 d-flex"
+         style="margin: 0 auto; min-height: calc(100vh - 150px); padding: 10px 20px; border: 5px solid gainsboro">
+        <div class="col-5" style="text-align: center">
+            <img src="uploads/<%=product.getUrlImage()%>" height="400" width="275" alt="Cover" border="2px">
         </div>
         <div class="col-7">
-            <h2>Tên sản phẩm</h2>
+            <form action="" method="post">
+                <div id="nameProduct" style="font-size: 30px; font-weight: 200; padding: 10px 0;">
+                    <%=product.getNameProduct()%>
+                </div>
+                <div id="price"
+                     style="font-size: 20px; padding: 30px 0 25px 20px; background-color: #f7f7f8;">
+                    <span>Giá: </span><span style=" color: red"><%=product.getPrice()%>&nbsp;₫</span>
+                </div>
+                <div id="delivery" style="padding: 10px 0; display: flex; gap: 10px;">
+                <span class="divDelivery_left" style="font-size: 16px; font-weight: 200;">
+                    Vận chuyển:
+                </span>
+                    <span class="divDelivery_right" style="font-size: 16px; font-weight: 400;">
+                    Miễn phí vận chuyển
+                </span>
+                </div>
+                <div>
+                    <label for="amount">Số lượng: </label>
+                    <button class="btn btn-primary" type="button" onclick="decreaseAmount()">-</button>
+                    <input id="amount" type="number" name="amount" style="width: 100px" value="1" oninput="isNumber()">
+                    <button class="btn btn-primary" type="button" onclick="increaseAmount()">+</button>
+                </div>
+                <div style="margin-top: 10px">
+                    <input type="hidden" name="idProduct" value="<%=product.getIdProduct()%>">
+                    <button type="submit" formaction="/buy" name="action" value="cart" class="btn btn-outline-danger"
+                            id="cartBtn">
+                        Thêm vào giỏ hàng
+                    </button>
+                    <button type="submit" formaction="/buy" name="action" value="buy" class="btn btn-outline-primary"
+                            id="buyBtn">
+                        Mua ngay
+                    </button>
+                </div>
+            </form>
+
         </div>
     </div>
     <div class="col-2"></div>
 </div>
+<%}%>
 </body>
+<script>
+    function decreaseAmount() {
+        let amount = parseInt(document.getElementById("amount").value);
+        if (!isNaN(amount) && amount >= 1) {
+            amount -= 1;
+            document.getElementById("amount").value = amount;
+        } else {
+            amount = 0;
+            document.getElementById("amount").value = amount;
+            document.getElementById("cartBtn").disabled = true;
+            document.getElementById("buyBtn").disabled = true;
+        }
+        if (amount <= 0) {
+            document.getElementById("cartBtn").disabled = true;
+            document.getElementById("buyBtn").disabled = true;
+        } else {
+            document.getElementById("cartBtn").disabled = false;
+            document.getElementById("buyBtn").disabled = false;
+        }
+    }
+
+    function increaseAmount() {
+        let amount = parseInt(document.getElementById("amount").value);
+        if (!isNaN(amount)) {
+            amount += 1;
+            document.getElementById("amount").value = amount;
+        } else {
+            amount = 0;
+            document.getElementById("amount").value = amount;
+            document.getElementById("cartBtn").disabled = true;
+            document.getElementById("buyBtn").disabled = true;
+        }
+
+        if (amount <= 0) {
+            document.getElementById("cartBtn").disabled = true;
+            document.getElementById("buyBtn").disabled = true;
+        } else {
+            document.getElementById("cartBtn").disabled = false;
+            document.getElementById("buyBtn").disabled = false;
+        }
+    }
+
+    function isNumber() {
+        let amount = parseInt(document.getElementById("amount").value);
+        if (amount <= 0) {
+            document.getElementById("cartBtn").disabled = true;
+            document.getElementById("buyBtn").disabled = true;
+        } else {
+            document.getElementById("cartBtn").disabled = false;
+            document.getElementById("buyBtn").disabled = false;
+        }
+    }
+</script>
 </html>

@@ -1,0 +1,8 @@
+
+n
+java:S1192"RDefine a constant instead of duplicating this literal "WEB-INF/login.jsp" 3 times.(Ä€®8ÍÅòÄ1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(º›°Î8ĞÅòÄ1
+I
+java:S1128	",Remove this unused import 'Ultilities.Role'.(ÀçÏ„8ßê‘Ä1
+K
+java:S1128".Remove this unused import 'java.util.Objects'.(¼¸õ›8ßê‘Ä1

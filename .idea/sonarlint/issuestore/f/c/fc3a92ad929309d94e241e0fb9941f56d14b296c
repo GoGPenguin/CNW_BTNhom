@@ -1,0 +1,4 @@
+
+k	java:S117G"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ä‘Ã°þÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ç¯êŠ
+n	java:S116"TRename this field "TotalCost" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±¾…áøÿÿÿÿ

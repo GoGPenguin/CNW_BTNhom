@@ -12,11 +12,13 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class OrderDAO {
-    private Connection cnn;
     private static OrderDAO instance;
+    private Connection cnn;
+
     private OrderDAO() {
         this.cnn = ConnectDB.getCnn();
     }
+
     public static synchronized OrderDAO getInstance() {
         if (instance == null) {
             instance = new OrderDAO();
@@ -78,7 +80,7 @@ public class OrderDAO {
             PreparedStatement pre = this.cnn.prepareStatement(sql);
             ResultSet rs = pre.executeQuery();
 
-            while(rs.next()) {
+            while (rs.next()) {
                 order.setIdOrder(idOrder);
                 order.setIdUser(rs.getString("idUser"));
                 order.setIdProduct(rs.getString("idProduct"));
@@ -129,7 +131,7 @@ public class OrderDAO {
         return income;
     }
 
-    public void  addOrder(String idProduct, String idUser, int amount, Date date) {
+    public void addOrder(String idProduct, String idUser, int amount, Date date) {
         String sql = "INSERT INTO `order` (idOrder, idProduct, idUser, amount, date " +
                 "VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement pre = this.cnn.prepareStatement(sql)) {
@@ -145,7 +147,7 @@ public class OrderDAO {
         }
     }
 
-    public void  addOrderMultipleProduct(String idOrder, String idProduct, String idUser, int amount, Date date) {
+    public void addOrderMultipleProduct(String idOrder, String idProduct, String idUser, int amount, Date date) {
         String sql = "INSERT INTO `order` (idOrder, idProduct, idUser, amount, date " +
                 "VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement pre = this.cnn.prepareStatement(sql)) {
@@ -167,19 +169,19 @@ public class OrderDAO {
             pre.setString(1, idOrder);
 
             pre.executeUpdate();
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-    public ArrayList<Order> getAllOrderNew()
-    {
+
+    public ArrayList<Order> getAllOrderNew() {
         ArrayList<Order> orderList = new ArrayList<>();
         String sql = "SELECT o.idOrder, u.nameUser, u.phoneUser, u.addressUser, SUM(p.Price * o.amount) AS TotalCost, o.date FROM `order` o JOIN user u ON o.idUser = u.idUser JOIN product p ON o.idProduct = p.idProduct GROUP BY o.idOrder, u.nameUser, u.phoneUser, u.addressUser, o.date";
         try {
             PreparedStatement pre = this.cnn.prepareStatement(sql);
             ResultSet rs = pre.executeQuery();
             while (rs.next()) {
-                Order order = new Order(rs.getString("idOrder"),rs.getString("nameUser"),rs.getString("addressUser"),rs.getString("phoneUser"),rs.getInt("TotalCost"),rs.getDate("date"));
+                Order order = new Order(rs.getString("idOrder"), rs.getString("nameUser"), rs.getString("addressUser"), rs.getString("phoneUser"), rs.getInt("TotalCost"), rs.getDate("date"));
                 orderList.add(order);
             }
         } catch (SQLException e) {
@@ -187,11 +189,11 @@ public class OrderDAO {
         }
         return orderList;
     }
+
     public ArrayList<Order> getFilterOrderMultipleColumn(String idOrder, String fullname, String dateSearch) {
         ArrayList<Order> orderList = new ArrayList<>();
         String sql;
-        if(!dateSearch.equals(""))
-        {
+        if (!dateSearch.equals("")) {
             sql = "SELECT o.idOrder, u.nameUser, u.phoneUser, u.addressUser, SUM(p.Price * o.amount) AS TotalCost, o.date " +
                     "FROM `order` o " +
                     "JOIN user u ON o.idUser = u.idUser " +
@@ -223,8 +225,7 @@ public class OrderDAO {
             }
             return orderList;
 
-        }
-        else {
+        } else {
             sql = "SELECT o.idOrder, u.nameUser, u.phoneUser, u.addressUser, SUM(p.Price * o.amount) AS TotalCost, o.date " +
                     "FROM `order` o " +
                     "JOIN user u ON o.idUser = u.idUser " +

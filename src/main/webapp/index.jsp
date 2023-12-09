@@ -76,7 +76,7 @@
                     for (int i = 0; i < productList.size(); i++) {
                 %>
                 <div class="wrapper">
-                    <a href="/product?id=<%=productList.get(i).getIdProduct()%>" style="color: black; text-decoration: none">
+                    <a href="/product?idProduct=<%=productList.get(i).getIdProduct()%>" style="color: black; text-decoration: none">
                         <div class="thumbnail">
                             <img src="/uploads/<%=productList.get(i).getUrlImage()%>" alt="cover">
                         </div>

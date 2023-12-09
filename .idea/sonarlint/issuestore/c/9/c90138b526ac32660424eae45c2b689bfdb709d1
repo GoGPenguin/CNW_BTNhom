@@ -1,0 +1,16 @@
+
+’
+java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¦Æ¯‰ûÿÿÿÿ8Öì¢£Ä1
+’
+java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(î§ı™úÿÿÿÿ8×ì¢£Ä1
+’
+java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(õ«´¯úÿÿÿÿ8Øì¢£Ä1
+’
+java:S13192"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Ò¥‹õøÿÿÿÿ8Øì¢£Ä1
+
+java:S13195"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ÛÄ±8Ùì¢£Ä1
+’
+java:S13199"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(«ÆÊ”üÿÿÿÿ8Ùì¢£Ä1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(íÚÀæûÿÿÿÿ8äÔÜçÃ1
+¶
+java:S6548	"˜A Singleton implementation was detected. Make sure the use of the Singleton pattern is required and the implementation is the right one for the context.(»õáı8ãì¢£Ä1

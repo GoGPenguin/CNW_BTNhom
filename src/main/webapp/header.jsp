@@ -12,10 +12,10 @@
     <title>Header</title>
 </head>
 <body>
-<div class="row container-fluid row" style="max-width: 100%; display: flex; justify-content: left;">
+<div class="row container-fluid row" style="max-width: 100%; display: flex; justify-content: left; background-color: white">
     <div class="col-2">
         <div>
-            <a href="index.jsp"><img src="uploads/logo.png" alt="Logo" width="50" height="50"></a>
+            <a href="http://localhost:8080"><img src="uploads/logo.png" alt="Logo" width="50" height="50"></a>
         </div>
     </div>
     <div class="col-8" style="padding-top: 10px">
