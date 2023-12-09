@@ -147,15 +147,15 @@ public class OrderDAO {
         }
     }
 
-    public void addOrderMultipleProduct(String idOrder, String idProduct, String idUser, int amount, Date date) {
-        String sql = "INSERT INTO `order` (idOrder, idProduct, idUser, amount, date " +
+    public void addOrderMultipleProduct(String idOrder, String idProduct, String idUser, int amount, String date) {
+        String sql = "INSERT INTO `order` (idOrder, idProduct, idUser, amount, date) " +
                 "VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement pre = this.cnn.prepareStatement(sql)) {
             pre.setString(1, idOrder);
             pre.setString(2, idProduct);
             pre.setString(3, idUser);
             pre.setInt(4, amount);
-            pre.setDate(5, (java.sql.Date) date);
+            pre.setString(5, date);
 
             pre.executeUpdate();
         } catch (SQLException e) {

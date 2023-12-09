@@ -3,8 +3,10 @@ package Controller.User;
 import Model.BEAN.Order;
 import Model.BEAN.Product;
 import Model.BEAN.User;
+import Model.BO.OrderBO;
 import Model.BO.ProductBO;
 import Model.DAO.OrderDAO;
+import Ultilities.GenerateID;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -16,6 +18,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
@@ -123,17 +126,21 @@ public class BuyProduct extends HttpServlet {
 
                     case "pay":
                         orderList = (ArrayList<Order>) session.getAttribute("orderList");
-                        LocalDateTime currentTime = LocalDateTime.now();
-
-                        Date date = Date.from(currentTime.atZone(ZoneId.systemDefault()).toInstant());
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
+                        LocalDateTime currentDateTime = LocalDateTime.now();
+                        String formattedDate = currentDateTime.format(formatter);
+                        String idOrder = new GenerateID("`order`").generateID();
                         for (int i = 0; i < orderList.size(); i++) {
+                            orderList.get(i).setIdOrder(idOrder);
                             orderList.get(i).setNameUser(user.getNameUser());
                             orderList.get(i).setPhoneUser(user.getPhoneUser());
                             orderList.get(i).setAddressUser(user.getAddressUser());
-                            OrderDAO.getInstance().addOrder(orderList.get(i).getIdProduct(),
-                                    user.getIdUser(), orderList.get(i).getAmount(), date);
+                            OrderBO.getInstance().addOrderMultipleProduct(orderList.get(i).getIdOrder(),
+                                    orderList.get(i).getProduct().getIdProduct(), user.getIdUser(),
+                                    orderList.get(i).getAmount(), formattedDate);
                         }
-//                        request.getRequestDispatcher("index.jsp").forward(request, response);
+                        orderList = null;
+                        session.setAttribute("orderList", orderList);
                         response.sendRedirect("/");
                         break;
                 }
