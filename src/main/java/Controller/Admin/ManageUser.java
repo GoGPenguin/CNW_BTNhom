@@ -36,6 +36,15 @@ public class ManageUser extends HttpServlet {
                 }
                 break;
             }
+            case "handleDeleteUser":
+            {
+                try {
+                    handleDeleteUser(req,resp);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
+            }
 
 
         }
@@ -74,15 +83,15 @@ public class ManageUser extends HttpServlet {
 //                }
 //                break;
 //            }
-            case "handleDeleteUser":
-            {
-                try {
-                    handleDeleteUser(req,resp);
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-                break;
-            }
+//            case "handleDeleteUser":
+//            {
+//                try {
+//                    handleDeleteUser(req,resp);
+//                } catch (SQLException e) {
+//                    throw new RuntimeException(e);
+//                }
+//                break;
+//            }
             case "handleUpdateUser":
             {
                 try {

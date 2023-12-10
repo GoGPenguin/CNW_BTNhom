@@ -19,6 +19,7 @@ import java.io.InputStream;
 import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import org.apache.commons.codec.binary.Base64;
 
 
 @WebServlet(name = "ManageProduct" , urlPatterns = {"/ManageProduct"})
@@ -41,6 +42,14 @@ public class ManageProduct extends HttpServlet {
             case "getListProduct": {
                 try {
                     getListProduct(req, resp);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
+            }
+            case "handleDeleteProduct": {
+                try {
+                    handleDeleteProduct(req, resp);
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
@@ -78,14 +87,14 @@ public class ManageProduct extends HttpServlet {
                 }
                 break;
             }
-            case "handleDeleteProduct": {
-                try {
-                    handleDeleteProduct(req, resp);
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-                break;
-            }
+//            case "handleDeleteProduct": {
+//                try {
+//                    handleDeleteProduct(req, resp);
+//                } catch (SQLException e) {
+//                    throw new RuntimeException(e);
+//                }
+//                break;
+//            }
             case "handleUpdateProduct": {
                 try {
                     handleUpdateProduct(req, resp);
@@ -122,12 +131,21 @@ public class ManageProduct extends HttpServlet {
         String InputNameProductAddNew = req.getParameter("InputNameProductAddNew");
         String InputCategoryAddNew = req.getParameter("InputCategoryAddNew");
         String InputPriceProductAddNew = req.getParameter("InputPriceProductAddNew");
-        Part part = req.getPart("imageAddNewImageProduct");
-        String fileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
-        String path = req.getServletContext().getRealPath( "/" + "uploads" + File.separator + fileName);
-        InputStream is = part.getInputStream();
-        uploadFile(is,path);
-        productBO.addProduct(InputNameProductAddNew,InputCategoryAddNew,Integer.parseInt(InputPriceProductAddNew),fileName);
+//        Part part = req.getPart("imageAddNewImageProduct");
+//        String fileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+//        String path = req.getServletContext().getRealPath( "/" + "uploads" + File.separator + fileName);
+//        InputStream is = part.getInputStream();
+//        uploadFile(is,path);
+
+
+        //base64
+        Part filePart = req.getPart("imageAddNewImageProduct");
+        String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+        InputStream fileContent = filePart.getInputStream();
+        byte[] fileBytes = fileContent.readAllBytes();
+        String base64String = Base64.encodeBase64String(fileBytes);
+
+        productBO.addProduct(InputNameProductAddNew,InputCategoryAddNew,Integer.parseInt(InputPriceProductAddNew),base64String);
         ArrayList<Product> listProduct = productBO.getAllProduct();
         req.setAttribute("listProduct",listProduct);
         RequestDispatcher dispatcher = req.getRequestDispatcher("ManageProductPage.jsp");
@@ -136,23 +154,31 @@ public class ManageProduct extends HttpServlet {
     public void handleDeleteProduct(HttpServletRequest req, HttpServletResponse resp) throws SQLException, ServletException, IOException {
         String idProduct = req.getParameter("idProduct");
         productBO.deleteProduct(idProduct);
-        ArrayList<Product> listProduct = productBO.getAllProduct();
-        req.setAttribute("listProduct",listProduct);
-        RequestDispatcher dispatcher = req.getRequestDispatcher("ManageProductPage.jsp");
-        dispatcher.forward(req, resp);
+//        ArrayList<Product> listProduct = productBO.getAllProduct();
+//        req.setAttribute("listProduct",listProduct);
+//        RequestDispatcher dispatcher = req.getRequestDispatcher("ManageProductPage.jsp");
+//        dispatcher.forward(req, resp);
+        getListProduct(req, resp);
     }
 
     public void handleUpdateProduct(HttpServletRequest req, HttpServletResponse resp) throws SQLException, ServletException, IOException {
-            Part part = req.getPart("image");
-            String fileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
-            String path = req.getServletContext().getRealPath( "/" + "uploads" + File.separator + fileName);
-            InputStream is = part.getInputStream();
-            uploadFile(is,path);
+//            Part part = req.getPart("image");
+//            String fileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+//            String path = req.getServletContext().getRealPath( "/" + "uploads" + File.separator + fileName);
+//            InputStream is = part.getInputStream();
+//            uploadFile(is,path);
+        //base64
+        Part filePart = req.getPart("image");
+        String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+        InputStream fileContent = filePart.getInputStream();
+        byte[] fileBytes = fileContent.readAllBytes();
+        String base64String = Base64.encodeBase64String(fileBytes);
+
             String idProduct = req.getParameter("idProduct");
             String InputProductNameUpdate = req.getParameter("InputProductNameUpdate");
             String InputProductCategoryUpdate = req.getParameter("InputProductCategoryUpdate");
             String InputPriceProductUpdate = req.getParameter("InputPriceProductUpdate");
-            productBO.updateProduct(idProduct,InputProductNameUpdate,InputProductCategoryUpdate,Integer.parseInt(InputPriceProductUpdate),fileName);
+            productBO.updateProduct(idProduct,InputProductNameUpdate,InputProductCategoryUpdate,Integer.parseInt(InputPriceProductUpdate),base64String);
             getListProduct(req,resp);
 
     }

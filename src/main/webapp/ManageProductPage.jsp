@@ -168,10 +168,14 @@
         overflow: hidden;
         border-radius: 5px;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);">
+<%--                    <img style=" width: 100%;--%>
+<%--         height: 100%;--%>
+<%--        object-fit: cover;--%>
+<%--        border-radius: 5px;" src="${pageContext.request.contextPath}/uploads/<%= product.getUrlImage()%>" alt="">--%>
                     <img style=" width: 100%;
          height: 100%;
         object-fit: cover;
-        border-radius: 5px;" src="${pageContext.request.contextPath}/uploads/<%= product.getUrlImage()%>" alt="">
+        border-radius: 5px;" src="data:image/png;base64,<%= product.getUrlImage()%>" alt="">
                 </div>
             </td>
             <td><%= product.getPrice() %></td>
