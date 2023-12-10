@@ -1,4 +1,5 @@
-<%@ page import="Model.BEAN.Product" %><%--
+<%@ page import="Model.BEAN.Product" %>
+<%@ page import="Model.BEAN.User" %><%--
   Created by IntelliJ IDEA.
   User: ACER
   Date: 07/12/2023
@@ -24,6 +25,7 @@
 <jsp:include page="header.jsp"></jsp:include>
 <%
     Product product = (Product) request.getAttribute("product");
+    User user = (User) session.getAttribute("user");
     if (product == null) {
 %>
 <h1>Không tìm thấy sản phẩm!</h1>
@@ -33,7 +35,7 @@
     <div class="col-8 d-flex"
          style="margin: 0 auto; min-height: calc(100vh - 150px); padding: 10px 20px; border: 5px solid gainsboro">
         <div class="col-5" style="text-align: center">
-            <img src="uploads/<%=product.getUrlImage()%>" height="400" width="275" alt="Cover" border="2px">
+            <img src="data:image/png;base64,<%=product.getUrlImage()%>" height="400" width="275" alt="Cover" border="2px">
         </div>
         <div class="col-7">
             <form action="" method="post" id="form">
@@ -54,9 +56,13 @@
                 </div>
                 <div>
                     <label for="amount">Số lượng: </label>
-                    <button class="btn btn-primary" type="button" onclick="decreaseAmount()">-</button>
-                    <input id="amount" type="number" name="amount" style="width: 100px" value="1" oninput="isNumber()">
-                    <button class="btn btn-primary" type="button" onclick="increaseAmount()">+</button>
+                    <button class="btn btn-primary" type="button" onclick="decreaseAmount(<%=product.getPrice()%>)">-</button>
+                    <input id="amount" type="number" name="amount" style="width: 100px" value="1" oninput="isNumber(<%=product.getPrice()%>)">
+                    <button class="btn btn-primary" type="button" onclick="increaseAmount(<%=product.getPrice()%>)">+</button>
+                </div>
+                <div style="margin-top: 10px; font-size: 20px;">
+                    <span>Tạm tính: </span>
+                    <span id="totalCost" style="color: red"><%=product.getPrice()%>&nbsp;₫</span>
                 </div>
                 <div style="margin-top: 10px">
                     <input type="hidden" name="idProduct" value="<%=product.getIdProduct()%>">
@@ -65,7 +71,9 @@
                         Thêm vào giỏ hàng
                     </button>
                     <button type="button" formaction="/buy" name="action" value="buy" class="btn btn-outline-primary"
-                            id="buyBtn" onclick="confirmPurchase()">
+                            id="buyBtn" data-bs-toggle="modal" data-bs-target="#modalUser"
+                            onclick="showDetailForm1('<%=user.getIdUser()%>', '<%=product.getIdProduct()%>', '<%=user.getNameUser()%>',
+                                     '<%=user.getPhoneUser()%>', '<%=user.getAddressUser()%>')">
                         Mua ngay
                     </button>
                 </div>
@@ -76,66 +84,62 @@
     <div class="col-2"></div>
 </div>
 <%}%>
+
+<div class="modal fade" id="modalUser" data-bs-backdrop="static" data-bs-keyboard="false"
+     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Chi tiết đơn hàng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <form action="/buy?action=buy" method="post">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Ảnh</th>
+                                <th>Tên mặt hàng</th>
+                                <th>Đơn giá</th>
+                                <th>Số lượng</th>
+                                <th>Tổng tiền</th>
+                            </tr>
+                            <tr>
+                                <td><img src="data:image/png;base64,<%=product.getUrlImage()%>" alt="Cover" height="50" width="50"></td>
+                                <td><%=product.getNameProduct()%></td>
+                                <td><%=product.getPrice()%>&nbsp;₫</td>
+                                <td id="amountProduct"></td>
+                                <td id="totalCost1"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputFullName" class="form-label">Họ tên</label>
+                        <input type="text" class="form-control" id="InputFullName" name="InputFullNameUpdate" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputPhoneNumber" class="form-label">Số điện thoại</label>
+                        <input type="text" class="form-control" id="InputPhoneNumber" name="InputPhoneNumberUpdate" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputAddress" class="form-label">Địa chỉ</label>
+                        <input type="text" class="form-control" id="InputAddress" name="InputAddressUpdate" disabled>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <input type="hidden" name="idUser" value="" id="idUser">
+                    <input type="hidden" name="idProduct" value="" id="idProduct">
+                    <input type="hidden" name="amount" value="" id="amount1">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Thanh toán</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 </body>
-<script>
-    function decreaseAmount() {
-        let amount = parseInt(document.getElementById("amount").value);
-        if (!isNaN(amount) && amount >= 1) {
-            amount -= 1;
-            document.getElementById("amount").value = amount;
-        } else {
-            amount = 0;
-            document.getElementById("amount").value = amount;
-            document.getElementById("cartBtn").disabled = true;
-            document.getElementById("buyBtn").disabled = true;
-        }
-        if (amount <= 0) {
-            document.getElementById("cartBtn").disabled = true;
-            document.getElementById("buyBtn").disabled = true;
-        } else {
-            document.getElementById("cartBtn").disabled = false;
-            document.getElementById("buyBtn").disabled = false;
-        }
-    }
-
-    function increaseAmount() {
-        let amount = parseInt(document.getElementById("amount").value);
-        if (!isNaN(amount)) {
-            amount += 1;
-            document.getElementById("amount").value = amount;
-        } else {
-            amount = 0;
-            document.getElementById("amount").value = amount;
-            document.getElementById("cartBtn").disabled = true;
-            document.getElementById("buyBtn").disabled = true;
-        }
-
-        if (amount <= 0) {
-            document.getElementById("cartBtn").disabled = true;
-            document.getElementById("buyBtn").disabled = true;
-        } else {
-            document.getElementById("cartBtn").disabled = false;
-            document.getElementById("buyBtn").disabled = false;
-        }
-    }
-
-    function isNumber() {
-        let amount = parseInt(document.getElementById("amount").value);
-        if (amount <= 0) {
-            document.getElementById("cartBtn").disabled = true;
-            document.getElementById("buyBtn").disabled = true;
-        } else {
-            document.getElementById("cartBtn").disabled = false;
-            document.getElementById("buyBtn").disabled = false;
-        }
-    }
-
-    function confirmPurchase() {
-        let isConfirmed = confirm("Bạn có chắc chắn muốn mua ngay không?");
-        if (isConfirmed) {
-            document.getElementById("form").action = "/buy?action=buy";
-            document.getElementById("form").submit();
-        }
-    }
-</script>
+<script src="js/productDetail.js"></script>
 </html>

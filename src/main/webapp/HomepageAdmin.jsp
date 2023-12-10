@@ -112,7 +112,7 @@
                     </button>
                     <button class="nav-link" data-bs-toggle="pill" type="button" role="tab"
                             aria-controls="v-pills-messages" aria-selected="false" onclick="loadManagerCategoryPage()">
-                        <i class="fa-solid fa-list"></i>Manage Categogy
+                        <i class="fa-solid fa-list"></i>Manage Category
                     </button>
                     <button class="nav-link" data-bs-toggle="pill" type="button" role="tab"
                             aria-controls="v-pills-messages" aria-selected="false" onclick="loadManagerOrderPage()"><i

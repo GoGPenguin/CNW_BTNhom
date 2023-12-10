@@ -11,3 +11,13 @@ function zero() {
         document.getElementById("paymentBtn").disabled = false;
     }
 }
+
+function userInfo(){
+    document.getElementById('pay').hidden = true;
+    document.getElementById('infoUser').hidden = false;
+}
+
+function goBack() {
+    document.getElementById('pay').hidden = false;
+    document.getElementById('infoUser').hidden = true;
+}

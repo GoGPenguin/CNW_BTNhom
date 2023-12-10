@@ -129,7 +129,7 @@ public class BuyProduct extends HttpServlet {
                         order.setTotalCost(product.getPrice() * amount);
                         OrderBO.getInstance().addOrder(order.getProduct().getIdProduct(), user.getIdUser(), order.getAmount(),
                                 formattedDate);
-                        response.sendRedirect("/");
+                        request.getRequestDispatcher("success.jsp").forward(request, response);
                         break;
 
                     case "pay":
@@ -149,7 +149,8 @@ public class BuyProduct extends HttpServlet {
                         }
                         orderList = null;
                         session.setAttribute("orderList", orderList);
-                        response.sendRedirect("/");
+//                        response.sendRedirect("/");
+                        request.getRequestDispatcher("success.jsp").forward(request, response);
                         break;
                 }
             } else {

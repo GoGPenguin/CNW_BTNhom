@@ -78,7 +78,7 @@
                 <div class="wrapper">
                     <a href="/product?idProduct=<%=productList.get(i).getIdProduct()%>" style="color: black; text-decoration: none">
                         <div class="thumbnail">
-                            <img src="/uploads/<%=productList.get(i).getUrlImage()%>" alt="cover">
+                            <img src="data:image/png;base64,<%=productList.get(i).getUrlImage()%>" alt="cover">
                         </div>
                         <div class="text fw-bold"><%=productList.get(i).getNameProduct()%>
                         </div>

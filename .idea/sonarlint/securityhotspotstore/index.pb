@@ -7,18 +7,12 @@ R
 "src/main/webapp/css/style_css.html,6\8\685a179e0a2f613ed3eea43a8645d5e05b68784f
 b
 2src/main/java/Controller/Admin/ManageCategory.java,a\3\a3ed62c31debcfb03598631b4df23b97316cdc08
-a
-1src/main/java/Controller/Admin/ManageProduct.java,e\5\e52bdbc87cd391011a60bc750bc77620ddaf390b
 X
 (src/main/java/Ultilities/UTF8Filter.java,f\4\f4a57ae713d10da337dcfffa62b5b031aea9d712
-O
-src/main/webapp/WEB-INF/web.xml,2\e\2e22b6edd746fa3dc40ad7276c87c8d87d72a392
 R
 "src/main/java/Ultilities/Role.java,3\0\307b351ed36e093de188b5b995ff56e83687337c
 S
 #src/main/java/Model/BEAN/Admin.java,0\1\01cd965cd6970e91ca632efcdf00db4bc4b7d2e9
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 U
 %src/main/java/Database/ConnectDB.java,f\7\f7177017961c5fe07b248fb62405dadc6367ab56
 \
@@ -29,8 +23,6 @@ h
 8src/main/webapp/bootstrap520/css/bootstrap-utilities.css,6\8\681cea79053387f4da10e2df3617b5078cfb25f2
 S
 #src/main/java/Controller/Login.java,c\2\c215adf46f3a9c6e3fdcce7295bc90b0854af242
-U
-%src/main/webapp/ManageProductPage.jsp,b\a\ba629a3c8fff9c16603201fdf9f46f314c89b158
 T
 $src/main/java/Controller/Logout.java,5\a\5af35d48a8162adae2192c6106848cae92f118f6
 S
@@ -43,8 +35,6 @@ R
 "src/main/webapp/ManageUserPage.jsp,f\e\fea313473c9b00318bdb8c12fcbc1fc40743ed42
 V
 &src/main/webapp/ManageCategoryPage.jsp,4\4\44fbbaae1d018f3b994126101ab5309d5fdbc045
-Q
-!src/main/webapp/HomepageAdmin.jsp,b\4\b484fd39fb6bdbe8d8f3eecd73ffb3d31649a252
 T
 $src/main/webapp/WEB-INF/register.jsp,b\c\bc6e7ce0c6952cd2bae32618d60b1fb8ff345090
 R
@@ -53,18 +43,12 @@ R
 "src/main/java/Model/BO/UserBO.java,5\8\5851f78ade4d89d62f0e9d54ab841f9fd4935a87
 ]
 -src/main/java/Controller/User/DetailUser.java,4\5\4561c5d1f1853c86263af08a099b9580fd88f15b
-P
- src/main/webapp/js/userDetail.js,4\4\447df634fb2c5491ca07298873bba4a9010dae95
 T
 $src/main/java/Model/DAO/UserDAO.java,f\0\f031fca8a56f0e295ff496e1d13822bd1fc66825
 [
 +src/main/java/Controller/User/Register.java,5\f\5ff1a906b07f83d0e328ad2cbd6394bb3dced757
 U
 %src/main/java/Model/BEAN/Product.java,f\1\f1dd6424ed7b90e271649734fe6ae5a94f75526c
-S
-#src/main/webapp/js/filterProduct.js,b\d\bd763484cb06e49ba9e536ef069359d6f86d9ca0
-I
-src/main/webapp/index.jsp,8\e\8e6d3b70c9f5b02570779b0441540d45eceb0ded
 U
 %src/main/java/Model/BO/ProductBO.java,c\9\c90138b526ac32660424eae45c2b689bfdb709d1
 K
@@ -77,3 +61,7 @@ S
 #src/main/java/Model/BEAN/Order.java,f\c\fc3a92ad929309d94e241e0fb9941f56d14b296c
 Q
 !src/main/webapp/WEB-INF/login.jsp,4\a\4ad68415105aeafc8bfd2f975e167d09f6349f7e
+`
+0src/main/java/Controller/User/DetailProduct.java,5\4\54cfd21c2308418cbb1f32feb961d25ad0a68281
+_
+/src/main/java/Controller/Admin/ManageOrder.java,0\1\01540053fac5a2a443c051f2ca815a1a2e52195e

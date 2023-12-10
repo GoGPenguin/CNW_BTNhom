@@ -35,7 +35,7 @@ function createProductElement(product) {
     const thumbnail = document.createElement('div');
     thumbnail.className = 'thumbnail';
     const thumbnailImage = document.createElement('img');
-    thumbnailImage.src = '/uploads/' + product.urlImage;
+    thumbnailImage.src = 'data:image/png;base64,' + product.urlImage;
     thumbnailImage.alt = 'cover';
     thumbnail.appendChild(thumbnailImage);
 

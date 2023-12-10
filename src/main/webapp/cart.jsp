@@ -1,6 +1,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="Model.BEAN.Order" %>
-<%@ page import="com.google.gson.Gson" %><%--
+<%@ page import="com.google.gson.Gson" %>
+<%@ page import="Model.BEAN.User" %><%--
   Created by IntelliJ IDEA.
   User: ACER
   Date: 08/12/2023
@@ -58,7 +59,7 @@
                     <td><%=i + 1%>
                     </td>
                     <td>
-                        <img src="/uploads/<%=orderList.get(i).getProduct().getUrlImage()%>" alt="cover" height="50"
+                        <img src="data:image/png;base64,<%=orderList.get(i).getProduct().getUrlImage()%>" alt="cover" height="50"
                              width="50">
                     </td>
                     <td><%=orderList.get(i).getProduct().getNameProduct()%>
@@ -82,7 +83,7 @@
         </div>
         <div class="col-3" id="payment">
             <div id="payment1">
-                <form action="/buy" method="post" style="width: 100%; margin-left: 10px">
+                <div id="pay" style="width: 100%; margin-left: 10px">
                     <div style="display: flex; justify-content: space-around; align-items: center;">
                         <span style="font-size: 15px; text-align: left">Thành tiền: </span>
                         <span style="font-size: 20px; font-weight: 500; color: blue; text-align: right"
@@ -91,9 +92,30 @@
                     <br>
                     <hr>
                     <div>
-                        <button id="paymentBtn" type="submit" class="btn btn-primary w-100" name="action" value="pay">
+                        <button id="paymentBtn" type="button" class="btn btn-primary w-100" name="action" value="pay"
+                                onclick="userInfo()">
                             Thanh toán
                         </button>
+                    </div>
+                </div>
+                <form action="/buy" method="post" id="infoUser" style="width: 100%; margin-left: 10px" hidden>
+                    <h2>Xác nhận thông tin</h2>
+                    <%User user = (User) session.getAttribute("user");%>
+                    <p>
+                        <label for="name">Họ tên</label>
+                        <input type="text" class="form-control" value="<%=user.getNameUser()%>" id="name" name="name" disabled>
+                    </p>
+                    <p>
+                        <label for="phone">Số điện thoại</label>
+                        <input type="text" class="form-control" value="<%=user.getPhoneUser()%>" id="phone" name="phone" disabled>
+                    </p>
+                    <p>
+                        <label for="address">Địa chỉ</label>
+                        <input type="text" class="form-control" value="<%=user.getAddressUser()%>" id="address" name="address" disabled>
+                    </p>
+                    <div class="d-flex">
+                        <button type="button" class="w-50 btn btn-danger" onclick="goBack()">Trở lại</button>
+                        <button type="submit" class="w-50 btn btn-primary" name="action" value="pay">Đặt hàng</button>
                     </div>
                 </form>
             </div>
