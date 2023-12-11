@@ -1,0 +1,30 @@
+
+m
+java:S1192&"KDefine a constant instead of duplicating this literal "idCategory" 7 times.(Ûÿ§’ıÿÿÿÿ8ïİ®éÃ1
+
+java:S11924"{Define a constant instead of duplicating this literal "JOIN category ON product.idCategory = category.idCategory " 4 times.(ÿ–Èşÿÿÿÿ8ïİ®éÃ1
+g
+java:S11922"JDefine a constant instead of duplicating this literal "SELECT * " 4 times.(ƒàÓè8ïİ®éÃ1
+c
+java:S1192%"FDefine a constant instead of duplicating this literal "price" 6 times.(˜òÖ€8ïİ®éÃ1
+k
+java:S11923"NDefine a constant instead of duplicating this literal "FROM product " 4 times.(é“¹œ8ïİ®éÃ1
+g
+java:S1192#"JDefine a constant instead of duplicating this literal "idProduct" 5 times.(úÔéÆ8ïİ®éÃ1
+k
+java:S1192'"IDefine a constant instead of duplicating this literal "urlImage" 6 times.(âïŞÖüÿÿÿÿ8ğİ®éÃ1
+i
+java:S1192$"LDefine a constant instead of duplicating this literal "nameProduct" 6 times.(²³›‚8ğİ®éÃ1
+
+java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¤àã•8ñİ®éÃ1
+’
+java:S13190"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¨ï±âúÿÿÿÿ8ñİ®éÃ1
+’
+java:S1319O"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Ğ–ÔŸıÿÿÿÿ8ñİ®éÃ1
+“
+java:S1319¨"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Ò¥‹õøÿÿÿÿ8òİ®éÃ1
+
+java:S1319ä"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ÛÄ±8òİ®éÃ1
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ƒôĞ¡üÿÿÿÿ
+»
+java:S6548"˜A Singleton implementation was detected. Make sure the use of the Singleton pattern is required and the implementation is the right one for the context.(Ê‰àúÿÿÿÿ8ÄŞ®éÃ1

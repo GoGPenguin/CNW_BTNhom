@@ -1,0 +1,12 @@
+
+l
+java:S1192!"JDefine a constant instead of duplicating this literal "index.jsp" 3 times.(ŠÓğ¿øÿÿÿÿ8°Ò£Ä1
+i
+java:S1192"LDefine a constant instead of duplicating this literal "productList" 3 times.(“ŒâÙ8°Ò£Ä1
+m
+java:S1192"KDefine a constant instead of duplicating this literal "categoryId" 3 times.(•ñÃùúÿÿÿÿ8°Ò£Ä1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(§ÍÎìùÿÿÿÿ8‘°Ò£Ä1
+\
+java:S1854Y"?Remove this useless assignment to local variable "productList".(—è®·8§°Ò£Ä1
+J
+java:S1144W"-Remove this unused private "showList" method.(Ä–É¤8©°Ò£Ä1

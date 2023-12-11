@@ -68,16 +68,18 @@
             }
             if (session.getAttribute("admin") == null && session.getAttribute("user") == null) {
         %>
-        <a href="/login">
-            <button class="btn btn-primary">
-                Đăng nhập
-            </button>
-        </a>
-        <a href="/register">
-            <button class="btn btn-primary">
-                Đăng kí <i class="fas fa-sign-in-alt"></i>
-            </button>
-        </a>
+        <div style="display: flex">
+            <a href="/login">
+                <button class="btn btn-primary">
+                    Đăng nhập
+                </button>
+            </a>
+            <a href="/register">
+                <button class="btn btn-primary">
+                    Đăng kí <i class="fas fa-sign-in-alt"></i>
+                </button>
+            </a>
+        </div>
         <%}%>
     </div>
 </div>

@@ -64,7 +64,7 @@
             <i class="checkmark">✓</i>
         </div>
         <h1>Thành công</h1>
-        <p>Chúng tôi đã nhận được đơn hàng của bạn<br/> và sẽ giao trong thời gian từ 1 - 3 ngày!</p>
+        <p>Chúng tôi đã nhận được đơn hàng của bạn<br> và sẽ giao trong thời gian từ 1 - 3 ngày!</p>
         <br>
         <a href="/">
             <button class="btn btn-primary">Về lại trang chủ</button>

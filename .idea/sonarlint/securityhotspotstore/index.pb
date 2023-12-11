@@ -65,3 +65,23 @@ Q
 0src/main/java/Controller/User/DetailProduct.java,5\4\54cfd21c2308418cbb1f32feb961d25ad0a68281
 _
 /src/main/java/Controller/Admin/ManageOrder.java,0\1\01540053fac5a2a443c051f2ca815a1a2e52195e
+^
+.src/main/java/Controller/User/ShowProduct.java,a\9\a9fa8638257c667da4cd8557dbd650f0a2ee6eb4
+W
+'src/main/java/Model/DAO/ProductDAO.java,7\8\780fa0ae317701a3101c3234a70dc86b05b7a42a
+X
+(src/main/java/Ultilities/GenerateID.java,7\2\72aa8777d0ba7cf48fc73455d033375ea1771d7a
+S
+#src/main/java/Model/BO/OrderBO.java,b\8\b82231c86166fa1831bbb2bf8d7d7648e2ec557a
+a
+1src/main/java/Controller/Admin/ManageProduct.java,e\5\e52bdbc87cd391011a60bc750bc77620ddaf390b
+O
+src/main/webapp/WEB-INF/web.xml,2\e\2e22b6edd746fa3dc40ad7276c87c8d87d72a392
+Q
+!src/main/webapp/HomepageAdmin.jsp,b\4\b484fd39fb6bdbe8d8f3eecd73ffb3d31649a252
+U
+%src/main/webapp/ManageProductPage.jsp,b\a\ba629a3c8fff9c16603201fdf9f46f314c89b158
+P
+ src/main/webapp/js/userDetail.js,4\4\447df634fb2c5491ca07298873bba4a9010dae95
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec

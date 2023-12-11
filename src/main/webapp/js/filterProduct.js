@@ -1,4 +1,12 @@
 function filterProduct(categoryId) {
+    // Đặt tất cả các li về trạng thái không được chọn
+    let listItems = document.querySelectorAll('.list-group-item');
+    listItems.forEach(function (item) {
+        item.classList.remove('active');
+    });
+
+    // Đặt li được chọn về trạng thái được chọn
+    event.currentTarget.parentElement.parentElement.classList.add('active');
     fetch('http://localhost:8080?categoryId=' + categoryId, {
         method: 'POST',
         headers: {
