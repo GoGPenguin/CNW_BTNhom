@@ -40,7 +40,7 @@
 <div class="row d-flex" style="max-width: 100%">
     <div class="col-2" style="margin-top: 10px;">
         <ul class="list-group" style="border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.1) 2px 2px 10px 5px;">
-            <li class="list-group-item" style="text-align: center; border: 2px solid grey; border-top-left-radius: 10px;
+            <li class="list-group-item" style="text-align: center; border: 1px solid grey; border-top-left-radius: 10px;
                                                 border-top-right-radius: 10px;">
                 <b>Danh mục</b>
             </li>
@@ -60,7 +60,7 @@
             } else {
                 for (int i = 0; i < categoryList.size() - 1; i++) {
             %>
-            <li class="list-group-item" style=" border: 2px solid grey;">
+            <li class="list-group-item" style=" border: 1px solid grey;">
                 <span style="color: blue">
                     <button class="categoryBtn" style="padding: 0; border: none; background: none; width: 100%; height: 100%"
                             onclick="filterProduct('<%=categoryList.get(i).getIdCategory()%>')">
@@ -72,7 +72,7 @@
                 }
                 Category category = categoryList.get(categoryList.size() - 1);
             %>
-            <li class="list-group-item" style=" border: 2px solid grey; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+            <li class="list-group-item" style=" border: 1px solid grey; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
                 <span style="color: blue;">
                     <button class="categoryBtn" style="padding: 0; border: none; background: none; width: 100%; height: 100%"
                             onclick="filterProduct('<%=category.getIdCategory()%>')">
@@ -98,10 +98,10 @@
                 } else {
                     for (int i = 0; i < productList.size(); i++) {
                 %>
-                <div class="wrapper">
+                <div class="wrapper" style="border: 1px solid black">
                     <a href="/product?idProduct=<%=productList.get(i).getIdProduct()%>"
                        style="color: black; text-decoration: none">
-                        <div class="thumbnail">
+                        <div class="thumbnail" style="border: 1px solid black">
                             <img src="data:image/png;base64,<%=productList.get(i).getUrlImage()%>" alt="cover">
                         </div>
                         <div class="text fw-bold"><%=productList.get(i).getNameProduct()%>
