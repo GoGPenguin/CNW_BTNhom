@@ -1,4 +1,12 @@
 function filterProduct(categoryId) {
+    // Đặt tất cả các li về trạng thái không được chọn
+    let listItems = document.querySelectorAll('.list-group-item');
+    listItems.forEach(function (item) {
+        item.classList.remove('active');
+    });
+
+    // Đặt li được chọn về trạng thái được chọn
+    event.currentTarget.parentElement.parentElement.classList.add('active');
     fetch('http://localhost:8080?categoryId=' + categoryId, {
         method: 'POST',
         headers: {
@@ -27,10 +35,15 @@ function createProductElement(product) {
     const wrapper = document.createElement('div');
     wrapper.className = 'wrapper';
 
+    const anchor = document.createElement('a');
+    anchor.href = '/product?id=' + product.idProduct;
+    anchor.style.color = 'black';
+    anchor.style.textDecoration = 'none';
+
     const thumbnail = document.createElement('div');
     thumbnail.className = 'thumbnail';
     const thumbnailImage = document.createElement('img');
-    thumbnailImage.src = '/uploads/' + product.urlImage;
+    thumbnailImage.src = 'data:image/png;base64,' + product.urlImage;
     thumbnailImage.alt = 'cover';
     thumbnail.appendChild(thumbnailImage);
 
@@ -42,10 +55,13 @@ function createProductElement(product) {
     price.className = 'price';
     price.textContent = product.price + ' ₫';
 
-    wrapper.appendChild(thumbnail);
-    wrapper.appendChild(text);
-    wrapper.appendChild(price);
+    anchor.appendChild(thumbnail);
+    anchor.appendChild(text);
+    anchor.appendChild(price);
+
+    wrapper.appendChild(anchor);
 
     return wrapper;
 }
+
 

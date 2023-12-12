@@ -36,11 +36,11 @@ public class OrderBO {
     public int getIncomeById(String idOrder) {
         return orderDAO.getIncomeById(idOrder);
     }
-    public void addOrder(String idProduct, String idUser, int amount, Date date) {
+    public void addOrder(String idProduct, String idUser, int amount, String date) {
         orderDAO.addOrder(idProduct, idUser, amount, date);
     }
 
-    public void  addOrderMultipleProduct(String idOrder, String idProduct, String idUser, int amount, Date date) {
+    public void  addOrderMultipleProduct(String idOrder, String idProduct, String idUser, int amount, String date) {
         orderDAO.addOrderMultipleProduct(idOrder, idProduct, idUser, amount, date);
     }
     public void deleteOrder(String idOrder) {

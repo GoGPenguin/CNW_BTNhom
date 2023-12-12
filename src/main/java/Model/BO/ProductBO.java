@@ -53,4 +53,8 @@ public class ProductBO {
     public ArrayList<Category> getListNameCategory() {
         return productDAO.getListNameCategory();
     }
+
+    public ArrayList<Product> filterProduct(String productName) {
+        return productDAO.filterProduct(productName);
+    }
 }

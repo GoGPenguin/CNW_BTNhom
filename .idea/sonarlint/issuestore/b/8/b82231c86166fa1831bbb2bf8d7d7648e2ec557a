@@ -1,0 +1,17 @@
+
+†
+java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(•¯¾ß
+‹
+java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¦Ç–Ûÿÿÿÿÿ
+†
+java:S13192"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(øç»Í
+†
+java:S13196"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Ñð§¾
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(íÚÀæûÿÿÿÿ
+¯
+java:S6548
+"˜A Singleton implementation was detected. Make sure the use of the Singleton pattern is required and the implementation is the right one for the context.(ÍÛæ¯
+M
+java:S1128"1Remove this unused import 'Model.DAO.ProductDAO'.(ÿáˆg8Ã”æ‰Å1
+H
+java:S1128"+Remove this unused import 'java.util.Date'.(¸…¼ü8Ä”æ‰Å1

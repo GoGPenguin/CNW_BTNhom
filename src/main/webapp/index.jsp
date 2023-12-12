@@ -25,16 +25,28 @@
           integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="css/css.css">
+    <style>
+        .list-group-item {
+            transition: background-color 0.3s;
+        }
+        .list-group-item.active {
+            background-color: #007bff;
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
-<div class="row">
-    <div class="col-2" style="margin-top: 10px">
-        <ul class="list-group">
-            <li class="list-group-item" style="text-align: center"><b>Danh mục</b></li>
-            <li class="list-group-item">
+<div class="row d-flex" style="max-width: 100%">
+    <div class="col-2" style="margin-top: 10px;">
+        <ul class="list-group" style="border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.1) 2px 2px 10px 5px;">
+            <li class="list-group-item" style="text-align: center; border: 1px solid grey; border-top-left-radius: 10px;
+                                                border-top-right-radius: 10px;">
+                <b>Danh mục</b>
+            </li>
+            <li class="list-group-item" style=" border: 2px solid grey;">
                 <span style="color: blue">
-                    <button style="padding: 0; border: none; background: none; width: 100%; height: 100%"
+                    <button class="categoryBtn" style="padding: 0; border: none; background: none; width: 100%; height: 100%; "
                             onclick="filterProduct('All')">Tất cả
                     </button>
                 </span>
@@ -46,18 +58,29 @@
             <p>Không có dữ liệu</p>
             <%
             } else {
-                for (int i = 0; i < categoryList.size(); i++) {
+                for (int i = 0; i < categoryList.size() - 1; i++) {
             %>
-            <li class="list-group-item">
+            <li class="list-group-item" style=" border: 1px solid grey;">
                 <span style="color: blue">
-                    <button style="padding: 0; border: none; background: none; width: 100%; height: 100%"
+                    <button class="categoryBtn" style="padding: 0; border: none; background: none; width: 100%; height: 100%"
                             onclick="filterProduct('<%=categoryList.get(i).getIdCategory()%>')">
                         <%=categoryList.get(i).getNameCategory()%>
                     </button>
                 </span>
             </li>
             <%
-                    }
+                }
+                Category category = categoryList.get(categoryList.size() - 1);
+            %>
+            <li class="list-group-item" style=" border: 1px solid grey; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                <span style="color: blue;">
+                    <button class="categoryBtn" style="padding: 0; border: none; background: none; width: 100%; height: 100%"
+                            onclick="filterProduct('<%=category.getIdCategory()%>')">
+                        <%=category.getNameCategory()%>
+                    </button>
+                </span>
+            </li>
+            <%
                 }
             %>
         </ul>
@@ -75,13 +98,16 @@
                 } else {
                     for (int i = 0; i < productList.size(); i++) {
                 %>
-                <div class="wrapper">
-                    <div class="thumbnail">
-                        <img src="/uploads/<%=productList.get(i).getUrlImage()%>" alt="cover">
-                    </div>
-                    <div class="text fw-bold"><%=productList.get(i).getNameProduct()%>
-                    </div>
-                    <div class="price"><%=productList.get(i).getPrice()%>&nbsp;₫</div>
+                <div class="wrapper" style="border: 1px solid black">
+                    <a href="/product?idProduct=<%=productList.get(i).getIdProduct()%>"
+                       style="color: black; text-decoration: none">
+                        <div class="thumbnail" style="border: 1px solid black">
+                            <img src="data:image/png;base64,<%=productList.get(i).getUrlImage()%>" alt="cover">
+                        </div>
+                        <div class="text fw-bold"><%=productList.get(i).getNameProduct()%>
+                        </div>
+                        <div class="price"><%=productList.get(i).getPrice()%>&nbsp;₫</div>
+                    </a>
                 </div>
                 <%
                         }
@@ -90,6 +116,7 @@
             </div>
         </div>
     </div>
+    <div class="col-1"></div>
 </div>
 </body>
 <script src="js/filterProduct.js"></script>

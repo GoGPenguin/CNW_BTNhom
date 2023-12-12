@@ -24,6 +24,8 @@ public class ShowProduct extends HttpServlet {
         doPost(request, response);
         if (request.getParameter("categoryId") != null){
             filterCategory(request, response);
+        } else if (request.getParameter("productName") != null) {
+            filterProduct(request, response);
         } else {
             request.setAttribute("categoryList", CategoryBO.getInstance().getAllCategory());
             request.setAttribute("productList", ProductBO.getInstance().getAllProduct());
@@ -32,6 +34,23 @@ public class ShowProduct extends HttpServlet {
             } catch (ServletException e) {
                 throw new RuntimeException(e);
             }
+        }
+    }
+
+    private void filterProduct(HttpServletRequest request, HttpServletResponse response) {
+        String productName = request.getParameter("productName");
+        ArrayList<Product> productList;
+        if (Objects.equals(productName, "")){
+            productList = ProductBO.getInstance().getAllProduct();
+        } else {
+            productList = ProductBO.getInstance().filterProduct(productName);
+        }
+        request.setAttribute("categoryList", CategoryBO.getInstance().getAllCategory());
+        request.setAttribute("productList", productList);
+        try {
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        } catch (ServletException | IOException e) {
+            throw new RuntimeException(e);
         }
     }
 

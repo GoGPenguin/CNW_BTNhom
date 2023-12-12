@@ -1,4 +1,15 @@
 
+h
+java:S1301"KReplace this "switch" statement by "if" statements to increase readability.(ı™Åó8ŞÄ¾Ä1
+h
+java:S13010"KReplace this "switch" statement by "if" statements to increase readability.(ı™Åó8ŞÄ¾Ä1
 o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¹Áï£
-X
-java:S2094"BRemove this empty class, write its code or make it an "interface".(¹«Àä
+K
+java:S1948")Make "orderBO" transient or serializable.(°²Ó¾ÿÿÿÿÿ8‚Å¾Ä1
+>	java:S131""Add a default case to this switch.(ı™Åó8‘Å¾Ä1
+>	java:S1310""Add a default case to this switch.(ı™Åó8Å¾Ä1
+X	java:S1253"<This block of commented-out lines of code should be removed.(Ú°à¬8Å¾Ä1
+‹
+java:S1130G"nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(ãŒÆ§8¦Å¾Ä1
+‹
+java:S1130O"nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(Û·Æë8®Å¾Ä1

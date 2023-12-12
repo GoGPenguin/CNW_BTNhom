@@ -11,10 +11,10 @@ k
 java:S11923"NDefine a constant instead of duplicating this literal "FROM product " 4 times.(é“¹œ8ïİ®éÃ1
 g
 java:S1192#"JDefine a constant instead of duplicating this literal "idProduct" 5 times.(úÔéÆ8ïİ®éÃ1
-i
-java:S1192$"LDefine a constant instead of duplicating this literal "nameProduct" 6 times.(²³›‚8ğİ®éÃ1
 k
 java:S1192'"IDefine a constant instead of duplicating this literal "urlImage" 6 times.(âïŞÖüÿÿÿÿ8ğİ®éÃ1
+i
+java:S1192$"LDefine a constant instead of duplicating this literal "nameProduct" 6 times.(²³›‚8ğİ®éÃ1
 
 java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¤àã•8ñİ®éÃ1
 ’

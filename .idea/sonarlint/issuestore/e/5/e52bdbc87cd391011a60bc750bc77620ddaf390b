@@ -1,4 +1,35 @@
 
+s
+java:S1192w"VDefine a constant instead of duplicating this literal "ManageProductPage.jsp" 3 times.(‘Àş¦8¦û‰Å1
+i
+java:S1192v"LDefine a constant instead of duplicating this literal "listProduct" 3 times.(œËàı8§û‰Å1
+s	java:S117ƒ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹š¥Ñúÿÿÿÿ8¬û‰Å1
+s	java:S117„"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ËÒÉÉÿÿÿÿÿ8¬û‰Å1
+n	java:S117…"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(øÖ¾’8®û‰Å1
+n	java:S117²"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ùê¡û8®û‰Å1
+n	java:S117³"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦ª¹Ğ8±û‰Å1
+n	java:S117´"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬±¸ê8³û‰Å1
+h
+java:S1301'"KReplace this "switch" statement by "if" statements to increase readability.(ı™Åó8´û‰Å1
 o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¹Áï£
-X
-java:S2094"BRemove this empty class, write its code or make it an "interface".(¥÷Æœ
+M
+java:S1948"+Make "productBO" transient or serializable.(Ò£Õûÿÿÿÿ8˜ü‰Å1
+>	java:S131'""Add a default case to this switch.(ı™Åó8©ü‰Å1
+>	java:S131@""Add a default case to this switch.(ı™Åó8¹ü‰Å1
+X	java:S125J"<This block of commented-out lines of code should be removed.(İ¿Ë•8½ü‰Å1
+X	java:S125Z"<This block of commented-out lines of code should be removed.(à’ñ™8Áü‰Å1
+
+java:S1130o"nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(şßÅªüÿÿÿÿ8Ëü‰Å1
+‹
+java:S1130z"nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(è“Ò8Ûü‰Å1
+_
+java:S1854"<Remove this useless assignment to local variable "fileName".(ÚŸòîùÿÿÿÿ8äü‰Å1
+Y	java:S125†"<This block of commented-out lines of code should be removed.( ¸ñê8îü‰Å1
+P
+java:S1481"-Remove this unused "fileName" local variable.(ÚŸòîùÿÿÿÿ8‡ı‰Å1
+^	java:S125"<This block of commented-out lines of code should be removed.(ÀîŒúÿÿÿÿ8’ı‰Å1
+_
+java:S1854¬"<Remove this useless assignment to local variable "fileName".(ÚŸòîùÿÿÿÿ8“ı‰Å1
+Y	java:S125¥"<This block of commented-out lines of code should be removed.(¯õ­8”ı‰Å1
+P
+java:S1481¬"-Remove this unused "fileName" local variable.(ÚŸòîùÿÿÿÿ8ı‰Å1

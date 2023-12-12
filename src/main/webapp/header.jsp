@@ -12,15 +12,15 @@
     <title>Header</title>
 </head>
 <body>
-<div class="row container-fluid" style="width: 100%; display: flex; justify-content: left" class="row">
+<div class="row container-fluid row" style="max-width: 100%; display: flex; justify-content: left; background-color: white">
     <div class="col-2">
         <div>
-            <a href="index.jsp"><img src="uploads/logo.png" alt="Logo" width="50" height="50"></a>
+            <a href="http://localhost:8080"><img src="uploads/logo.png" alt="Logo" width="50" height="50"></a>
         </div>
     </div>
     <div class="col-8" style="padding-top: 10px">
         <form action="" method="get">
-            <input type="text" placeholder="Tìm kiếm" style="height: 30px; width: 70%">
+            <input type="text" name="productName" placeholder="Tìm kiếm" style="height: 30px; width: 70%">
             <button type="submit" class="btn btn-primary"
                     style="height: 30px; width: 10%; text-align: center; padding-top: 2px; margin-top: -1px">
                 <i class="fas fa-search"></i>
@@ -46,7 +46,7 @@
                 </li>
                 <li><a class="dropdown-item" href="/logout">Đăng xuất</a></li>
             </ul>
-            <a href="/buy"><i class="far fa-shopping-cart"></i></a>
+            <a href="/buy"><button class="btn btn-primary"><i class="fas fa-shopping-cart"></i></button></a>
         </div>
         <% }
             if (session != null && session.getAttribute("admin") != null) {
@@ -68,16 +68,18 @@
             }
             if (session.getAttribute("admin") == null && session.getAttribute("user") == null) {
         %>
-        <a href="/login">
-            <button class="btn btn-primary">
-                Đăng nhập
-            </button>
-        </a>
-        <a href="/register">
-            <button class="btn btn-primary">
-                Đăng kí <i class="fas fa-sign-in-alt"></i>
-            </button>
-        </a>
+        <div style="display: flex">
+            <a href="/login">
+                <button class="btn btn-primary">
+                    Đăng nhập
+                </button>
+            </a>
+            <a href="/register">
+                <button class="btn btn-primary">
+                    Đăng kí <i class="fas fa-sign-in-alt"></i>
+                </button>
+            </a>
+        </div>
         <%}%>
     </div>
 </div>
