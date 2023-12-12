@@ -225,7 +225,7 @@
                                             <input type="file" name = "image">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="InputPriceProductUpdate" class="form-label">Phone Number</label>
+                                            <label for="InputPriceProductUpdate" class="form-label">Giá tiền</label>
                                             <input type="number" class="form-control" id="InputPriceProductUpdate" name = "InputPriceProductUpdate" value="<%= product.getPrice() %>">
                                         </div>
 

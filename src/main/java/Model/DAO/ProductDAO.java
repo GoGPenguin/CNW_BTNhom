@@ -139,18 +139,33 @@ public class ProductDAO {
     }
 
     public void updateProduct(String idProduct, String nameProduct, String idCategory, int price, String urlImage) {
-        String sql = "UPDATE product SET nameProduct = ?, idCategory = ?, price = ?, urlImage = ? WHERE idProduct = ?";
-        try (PreparedStatement pre = this.cnn.prepareStatement(sql)) {
-            pre.setString(1, nameProduct);
-            pre.setString(2, idCategory);
-            pre.setInt(3, price);
-            pre.setString(4, urlImage);
-            pre.setString(5, idProduct);
+        if(!urlImage.equals(""))
+        {
+            String sql = "UPDATE product SET nameProduct = ?, idCategory = ?, price = ?, urlImage = ? WHERE idProduct = ?";
+            try (PreparedStatement pre = this.cnn.prepareStatement(sql)) {
+                pre.setString(1, nameProduct);
+                pre.setString(2, idCategory);
+                pre.setInt(3, price);
+                pre.setString(4, urlImage);
+                pre.setString(5, idProduct);
 
 
-            pre.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+                pre.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        else {
+            String sql = "UPDATE product SET nameProduct = ?, idCategory = ?, price = ? WHERE idProduct = ?";
+            try (PreparedStatement pre = this.cnn.prepareStatement(sql)) {
+                pre.setString(1, nameProduct);
+                pre.setString(2, idCategory);
+                pre.setInt(3, price);
+                pre.setString(4, idProduct);
+                pre.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 

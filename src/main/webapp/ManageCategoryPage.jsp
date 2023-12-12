@@ -139,11 +139,11 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="mb-3">
-                                            <label for="InputIDCategoryUpdate" class="form-label">Email address</label>
+                                            <label for="InputIDCategoryUpdate" class="form-label">ID</label>
                                             <input type="text" class="form-control" id="InputIDCategoryUpdate" name = "InputIDCategoryUpdate" aria-describedby="emailHelp" value="<%= category.getIdCategory() %>" disabled>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="InputNameCategoryUpdate" class="form-label">Password</label>
+                                            <label for="InputNameCategoryUpdate" class="form-label">Tên loại hàng</label>
                                             <input type="text" class="form-control" id="InputNameCategoryUpdate" name = "InputNameCategoryUpdate"  value="<%= category.getNameCategory() %>">
                                         </div>
 
