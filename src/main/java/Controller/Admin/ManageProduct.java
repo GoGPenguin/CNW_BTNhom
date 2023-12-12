@@ -146,10 +146,11 @@ public class ManageProduct extends HttpServlet {
         String base64String = Base64.encodeBase64String(fileBytes);
 
         productBO.addProduct(InputNameProductAddNew,InputCategoryAddNew,Integer.parseInt(InputPriceProductAddNew),base64String);
-        ArrayList<Product> listProduct = productBO.getAllProduct();
-        req.setAttribute("listProduct",listProduct);
-        RequestDispatcher dispatcher = req.getRequestDispatcher("ManageProductPage.jsp");
-        dispatcher.forward(req, resp);
+//        ArrayList<Product> listProduct = productBO.getAllProduct();
+//        req.setAttribute("listProduct",listProduct);
+//        RequestDispatcher dispatcher = req.getRequestDispatcher("ManageProductPage.jsp");
+//        dispatcher.forward(req, resp);
+        getListProduct(req, resp);
     }
     public void handleDeleteProduct(HttpServletRequest req, HttpServletResponse resp) throws SQLException, ServletException, IOException {
         String idProduct = req.getParameter("idProduct");
