@@ -67,15 +67,33 @@ function confirmPurchase() {
     }
 }
 
-function showDetailForm1(idUser, idProduct, nameUser, phoneUser, addressUser) {
-    let amount = document.getElementById('amount').value;
-    let totalCost = document.getElementById('totalCost').innerHTML;
-    document.getElementById('amountProduct').innerHTML = amount;
-    document.getElementById('amount1').value = amount;
-    document.getElementById('totalCost1').innerHTML = totalCost;
-    document.getElementById('InputFullName').value = nameUser;
-    document.getElementById('InputPhoneNumber').value = phoneUser;
-    document.getElementById('InputAddress').value = addressUser;
-    document.getElementById('idUser').value = idUser;
-    document.getElementById('idProduct').value = idProduct;
+function showDetailForm1(idProduct) {
+    fetch('http://localhost:8080/product?&action=user', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ action: "user" })
+    })
+        .then(response => response.json())
+        .then(user => {
+            if (user == "User not found"){
+                window.location.href = 'http://localhost:8080/login';
+            } else {
+                // Điền dữ liệu vào các input
+                let amount = document.getElementById('amount').value;
+                let totalCost = document.getElementById('totalCost').innerHTML;
+                document.getElementById('amountProduct').innerHTML = amount;
+                document.getElementById('amount1').value = amount;
+                document.getElementById('totalCost1').innerHTML = totalCost;
+                document.getElementById('idProduct').value = idProduct;
+                document.getElementById('InputFullName').value = user.nameUser;
+                document.getElementById('InputPhoneNumber').value = user.phoneUser;
+                document.getElementById('InputAddress').value = user.addressUser;
+                document.getElementById('idUser').value = user.idUser;
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching user detail: ', error);
+        });
 }

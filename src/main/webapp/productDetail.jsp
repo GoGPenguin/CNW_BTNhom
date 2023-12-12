@@ -25,7 +25,8 @@
 <jsp:include page="header.jsp"></jsp:include>
 <%
     Product product = (Product) request.getAttribute("product");
-    User user = (User) session.getAttribute("user");
+    User user = null;
+    user = (User) session.getAttribute("user");
     if (product == null) {
 %>
 <h1>Không tìm thấy sản phẩm!</h1>
@@ -33,7 +34,7 @@
 <div class="row" style="max-width: 100%;">
     <div class="col-2"></div>
     <div class="col-8 d-flex"
-         style="margin: 0 auto; min-height: calc(100vh - 150px); padding: 10px 20px; border: 5px solid gainsboro">
+         style="min-height: calc(100vh - 150px); padding: 10px 20px; border: 5px solid gainsboro">
         <div class="col-5" style="text-align: center">
             <img src="data:image/png;base64,<%=product.getUrlImage()%>" height="400" width="275" alt="Cover" border="2px">
         </div>
@@ -56,9 +57,12 @@
                 </div>
                 <div>
                     <label for="amount">Số lượng: </label>
-                    <button class="btn btn-primary" type="button" onclick="decreaseAmount(<%=product.getPrice()%>)">-</button>
-                    <input id="amount" type="number" name="amount" style="width: 100px" value="1" oninput="isNumber(<%=product.getPrice()%>)">
-                    <button class="btn btn-primary" type="button" onclick="increaseAmount(<%=product.getPrice()%>)">+</button>
+                    <button class="btn btn-primary" type="button" onclick="decreaseAmount(<%=product.getPrice()%>)">-
+                    </button>
+                    <input id="amount" type="number" name="amount" style="width: 100px" value="1"
+                           oninput="isNumber(<%=product.getPrice()%>)">
+                    <button class="btn btn-primary" type="button" onclick="increaseAmount(<%=product.getPrice()%>)">+
+                    </button>
                 </div>
                 <div style="margin-top: 10px; font-size: 20px;">
                     <span>Tạm tính: </span>
@@ -72,8 +76,7 @@
                     </button>
                     <button type="button" formaction="/buy" name="action" value="buy" class="btn btn-outline-primary"
                             id="buyBtn" data-bs-toggle="modal" data-bs-target="#modalUser"
-                            onclick="showDetailForm1('<%=user.getIdUser()%>', '<%=product.getIdProduct()%>', '<%=user.getNameUser()%>',
-                                     '<%=user.getPhoneUser()%>', '<%=user.getAddressUser()%>')">
+                            onclick="showDetailForm1('<%=product.getIdProduct()%>')">
                         Mua ngay
                     </button>
                 </div>
@@ -106,7 +109,8 @@
                                 <th>Tổng tiền</th>
                             </tr>
                             <tr>
-                                <td><img src="data:image/png;base64,<%=product.getUrlImage()%>" alt="Cover" height="50" width="50"></td>
+                                <td><img src="data:image/png;base64,<%=product.getUrlImage()%>" alt="Cover" height="50"
+                                         width="50"></td>
                                 <td><%=product.getNameProduct()%></td>
                                 <td><%=product.getPrice()%>&nbsp;₫</td>
                                 <td id="amountProduct"></td>
@@ -120,7 +124,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="InputPhoneNumber" class="form-label">Số điện thoại</label>
-                        <input type="text" class="form-control" id="InputPhoneNumber" name="InputPhoneNumberUpdate" disabled>
+                        <input type="text" class="form-control" id="InputPhoneNumber" name="InputPhoneNumberUpdate"
+                               disabled>
                     </div>
                     <div class="mb-3">
                         <label for="InputAddress" class="form-label">Địa chỉ</label>

@@ -37,7 +37,6 @@ public class BuyProduct extends HttpServlet {
         } else {
             // Session không tồn tại, có thể yêu cầu đăng nhập
             response.sendRedirect("/login");
-
         }
 
     }

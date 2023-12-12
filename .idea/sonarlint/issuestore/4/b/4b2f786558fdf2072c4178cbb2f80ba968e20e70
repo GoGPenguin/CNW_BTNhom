@@ -1,22 +1,0 @@
-
-n
-java:S1192h"SDefine a constant instead of duplicating this literal "ManageUserPage.jsp" 4 times.(ñì£öüÿÿÿÿ
-d
-java:S1192g"IDefine a constant instead of duplicating this literal "listUser" 4 times.(‘¯Òüÿÿÿÿ
-a
-java:S1301"KReplace this "switch" statement by "if" statements to increase readability.(ı™Åó
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¹Áï£
->
-java:S1948"(Make "userBO" transient or serializable.(şò²°
-7	java:S131""Add a default case to this switch.(ı™Åó
-Q	java:S125*"<This block of commented-out lines of code should be removed.(ğÂ¸Ø
-7	java:S1310""Add a default case to this switch.(ı™Åó
-Q	java:S125E"<This block of commented-out lines of code should be removed.(Ú°à¬
-„
-java:S1130e"nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(ŞÇĞ˜
-‰
-java:S1130t"nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(ÿî³ªùÿÿÿÿ
-‰
-java:S1130~"nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(ü•ğ¨ıÿÿÿÿ
-…
-java:S1130‡"nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(ß ¬ã

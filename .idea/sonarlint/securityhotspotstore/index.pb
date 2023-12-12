@@ -27,8 +27,6 @@ T
 $src/main/java/Controller/Logout.java,5\a\5af35d48a8162adae2192c6106848cae92f118f6
 S
 #src/main/java/Model/BO/LoginBO.java,7\d\7d7e3a50fbad37f5dcbdffc6ceb813f2f7f4382b
-^
-.src/main/java/Controller/Admin/ManageUser.java,4\b\4b2f786558fdf2072c4178cbb2f80ba968e20e70
 U
 %src/main/java/Model/DAO/LoginDAO.java,2\9\2999d811e2d50a5bb9f819a12e9dedf3bbf723a0
 R
@@ -38,11 +36,7 @@ V
 T
 $src/main/webapp/WEB-INF/register.jsp,b\c\bc6e7ce0c6952cd2bae32618d60b1fb8ff345090
 R
-"src/main/java/Model/BEAN/User.java,0\7\0795adacc54fbcbda9b1ae09f6ab32c1fe4a466c
-R
 "src/main/java/Model/BO/UserBO.java,5\8\5851f78ade4d89d62f0e9d54ab841f9fd4935a87
-]
--src/main/java/Controller/User/DetailUser.java,4\5\4561c5d1f1853c86263af08a099b9580fd88f15b
 T
 $src/main/java/Model/DAO/UserDAO.java,f\0\f031fca8a56f0e295ff496e1d13822bd1fc66825
 [
@@ -61,8 +55,6 @@ S
 #src/main/java/Model/BEAN/Order.java,f\c\fc3a92ad929309d94e241e0fb9941f56d14b296c
 Q
 !src/main/webapp/WEB-INF/login.jsp,4\a\4ad68415105aeafc8bfd2f975e167d09f6349f7e
-`
-0src/main/java/Controller/User/DetailProduct.java,5\4\54cfd21c2308418cbb1f32feb961d25ad0a68281
 _
 /src/main/java/Controller/Admin/ManageOrder.java,0\1\01540053fac5a2a443c051f2ca815a1a2e52195e
 ^
@@ -81,7 +73,5 @@ Q
 !src/main/webapp/HomepageAdmin.jsp,b\4\b484fd39fb6bdbe8d8f3eecd73ffb3d31649a252
 U
 %src/main/webapp/ManageProductPage.jsp,b\a\ba629a3c8fff9c16603201fdf9f46f314c89b158
-P
- src/main/webapp/js/userDetail.js,4\4\447df634fb2c5491ca07298873bba4a9010dae95
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
