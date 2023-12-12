@@ -96,24 +96,24 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="InputEmailUpdate" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="InputEmailUpdate" name="InputEmailUpdate"
+                        <input type="text" class="form-control" value="" id="InputEmailUpdate" name="InputEmailUpdate"
                                aria-describedby="emailHelp" disabled>
                     </div>
                     <div class="mb-3">
                         <label for="InputPasswordUpdate" class="form-label">Mật khẩu</label>
-                        <input type="password" class="form-control" id="InputPasswordUpdate" name="InputPasswordUpdate">
+                        <input type="password" class="form-control" value="" id="InputPasswordUpdate" name="InputPasswordUpdate">
                     </div>
                     <div class="mb-3">
                         <label for="InputFullNameUpdate" class="form-label">Họ tên</label>
-                        <input type="text" class="form-control" id="InputFullNameUpdate" name="InputFullNameUpdate">
+                        <input type="text" class="form-control" value="" id="InputFullNameUpdate" name="InputFullNameUpdate">
                     </div>
                     <div class="mb-3">
                         <label for="InputPhoneNumberUpdate" class="form-label">Số điện thoại</label>
-                        <input type="text" class="form-control" id="InputPhoneNumberUpdate" name="InputPhoneNumberUpdate">
+                        <input type="text" class="form-control" value="" id="InputPhoneNumberUpdate" name="InputPhoneNumberUpdate">
                     </div>
                     <div class="mb-3">
                         <label for="InputAddressUpdate" class="form-label">Địa chỉ</label>
-                        <input type="text" class="form-control" id="InputAddressUpdate" name="InputAddressUpdate">
+                        <input type="text" class="form-control" value="" id="InputAddressUpdate" name="InputAddressUpdate">
                     </div>
                 </div>
 
