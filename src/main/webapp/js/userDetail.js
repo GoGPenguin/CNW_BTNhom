@@ -9,6 +9,7 @@ function showDetailForm(userId) {
         .then(response => response.json())
         .then(user => {
             // Điền dữ liệu vào các input
+            document.getElementById('InputUpdateId').value = user.idUser;
             document.getElementById('InputEmailUpdate').value = user.username;
             document.getElementById('InputPasswordUpdate').value = user.password;
             document.getElementById('InputFullNameUpdate').value = user.nameUser;
