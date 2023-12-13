@@ -42,8 +42,6 @@ $src/main/java/Model/DAO/UserDAO.java,f\0\f031fca8a56f0e295ff496e1d13822bd1fc66
 [
 +src/main/java/Controller/User/Register.java,5\f\5ff1a906b07f83d0e328ad2cbd6394bb3dced757
 U
-%src/main/java/Model/BEAN/Product.java,f\1\f1dd6424ed7b90e271649734fe6ae5a94f75526c
-U
 %src/main/java/Model/BO/ProductBO.java,c\9\c90138b526ac32660424eae45c2b689bfdb709d1
 K
 src/main/webapp/css/css.css,d\7\d7ffe9e7c01da697d140f373a478acae8eb2717e
@@ -75,3 +73,17 @@ U
 %src/main/webapp/ManageProductPage.jsp,b\a\ba629a3c8fff9c16603201fdf9f46f314c89b158
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+K
+src/main/webapp/success.jsp,2\d\2d2d75af380a99a96fb9b8e95f87e10616b18642
+H
+src/main/webapp/cart.jsp,1\5\15cc1f56cfb105c0c58f868f0a6e914318f5957b
+U
+%src/main/java/Model/DAO/OrderDAO.java,1\0\1035b1480806bc2df45d9b5ecd80bb9313c7a3a2
+J
+src/main/webapp/js/cart.js,f\d\fd1a8b93fe2d15f98f84ba62d67bf5184dbf8937
+^
+.src/main/java/Controller/Admin/ManageUser.java,4\b\4b2f786558fdf2072c4178cbb2f80ba968e20e70
+R
+"src/main/java/Model/BEAN/User.java,0\7\0795adacc54fbcbda9b1ae09f6ab32c1fe4a466c
+]
+-src/main/java/Controller/User/BuyProduct.java,e\e\eeeea6e0cd673ebf77740c329418384c7c5a5991

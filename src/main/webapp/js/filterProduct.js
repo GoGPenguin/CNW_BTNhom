@@ -34,6 +34,7 @@ function createProductElement(product) {
     // Create and return the HTML element for a product
     const wrapper = document.createElement('div');
     wrapper.className = 'wrapper';
+    wrapper.style.border = '1px solid black';
 
     const anchor = document.createElement('a');
     anchor.href = '/product?id=' + product.idProduct;
@@ -42,6 +43,7 @@ function createProductElement(product) {
 
     const thumbnail = document.createElement('div');
     thumbnail.className = 'thumbnail';
+    thumbnail.style.border = '1px solid black';
     const thumbnailImage = document.createElement('img');
     thumbnailImage.src = 'data:image/png;base64,' + product.urlImage;
     thumbnailImage.alt = 'cover';
@@ -65,3 +67,14 @@ function createProductElement(product) {
 }
 
 
+//`
+//                 <div class="wrapper" style="border: 1px solid black">
+//                     <a href="/product?idProduct=` + product.idProduct + `"
+//                        style="color: black; text-decoration: none">
+//                         <div class="thumbnail" style="border: 1px solid black">
+//                             <img src="data:image/png;base64,` + product.urlImage + `" alt="cover">
+//                         </div>
+//                         <div class="text fw-bold">` + product.nameProduct + `</div>
+//                         <div class="price">` + product.price + `&nbsp;₫</div>
+//                     </a>
+//                 </div>`;
