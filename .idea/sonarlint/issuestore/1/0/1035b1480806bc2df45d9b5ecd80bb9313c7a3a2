@@ -1,0 +1,30 @@
+
+`
+java:S1192¸"IDefine a constant instead of duplicating this literal "nameUser" 3 times.(Ê½úÞ
+a
+java:S1192¸"JDefine a constant instead of duplicating this literal "TotalCost" 3 times.(Ê½úÞ
+\
+java:S1192'"GDefine a constant instead of duplicating this literal "idUser" 3 times.(Ýë¼X
+^
+java:S1192&"HDefine a constant instead of duplicating this literal "idOrder" 5 times.(¤‘»ã
+`
+java:S1192("JDefine a constant instead of duplicating this literal "idProduct" 3 times.(§ý„Ä
+b
+java:S1192)"GDefine a constant instead of duplicating this literal "amount" 3 times.(ÆãÀæþÿÿÿÿ
+a
+java:S1192¸"JDefine a constant instead of duplicating this literal "phoneUser" 3 times.(Ê½úÞ
+c
+java:S1192¸"LDefine a constant instead of duplicating this literal "addressUser" 3 times.(Ê½úÞ
+†
+java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(•¯¾ß
+‹
+java:S13194"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¦Ç–Ûÿÿÿÿÿ
+‡
+java:S1319±"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(øç»Í
+‡
+java:S1319Á"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Ñð§¾
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ƒôÐ¡üÿÿÿÿ
+´
+java:S6548"˜A Singleton implementation was detected. Make sure the use of the Singleton pattern is required and the implementation is the right one for the context.(Íñºïýÿÿÿÿ
+H
+java:S1128"+Remove this unused import 'java.util.Date'.(¸…¼ü8…“ÌíÄ1

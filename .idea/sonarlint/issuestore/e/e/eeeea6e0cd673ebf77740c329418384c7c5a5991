@@ -1,0 +1,14 @@
+
+i
+java:S1192#"GDefine a constant instead of duplicating this literal "/login" 4 times.(€•éúÿÿÿÿ8‚¡îÄ1
+l
+java:S1192@"JDefine a constant instead of duplicating this literal "orderList" 6 times.(ÇÍäøÿÿÿÿ8‚¡îÄ1
+k
+java:S1192!"IDefine a constant instead of duplicating this literal "cart.jsp" 3 times.(™öÜÉıÿÿÿÿ8‚¡îÄ1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(§ÍÎìùÿÿÿÿ8„¡îÄ1
+o
+java:S3776-"RRefactor this method to reduce its Cognitive Complexity from 54 to the 15 allowed.(‹¨¯¿8­¡îÄ1
+C	java:S1314""Add a default case to this switch.(ë´åİşÿÿÿÿ8®¡îÄ1
+Y	java:S125—"<This block of commented-out lines of code should be removed.(ú’»8´™ó—Å1
+ä
+java:S6541-"ÆA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 109 to 64, Complexity from 17 to 14, Nesting Level from 6 to 2, Number of Variables from 24 to 6.(‹¨¯¿8·¡îÄ1
